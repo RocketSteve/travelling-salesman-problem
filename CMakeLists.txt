@@ -5,17 +5,22 @@ set(CMAKE_CXX_STANDARD 14)
 
 include_directories(include)
 
-file(GLOB classes src/classes/*.h src/classes/*.cpp)
+file(GLOB_RECURSE classes src/classes/*.h src/classes/*.cpp)
 
-add_executable(main
-        src/main.cpp
-        ${classes}
-        )
+add_executable(main src/main.cpp)
 
 find_package(Catch2 3 REQUIRED)
 
-add_executable(tests tests/test.cpp)
-target_link_libraries(tests PRIVATE Catch2::Catch2WithMain)
+enable_testing()
 
-add_executable(coordinate-tests tests/test.cpp tests/classes/CoordinateTest.cpp)
-target_link_libraries(coordinate-tests PRIVATE Catch2::Catch2WithMain)
+function(add_test_and_executable src name)
+    add_executable(${name} ${src})
+    target_link_libraries(${name} PRIVATE Catch2::Catch2WithMain)
+    add_test(NAME ${name} COMMAND ${name})
+endfunction()
+
+include(CTest)
+include(Catch)
+
+add_test_and_executable(tests/classes/Coordinate/CoordinateTest.cpp coordinate-tests)
+add_test_and_executable(tests/classes/GraphAdjacencyLists/AdjacencyList/AdjacencyListTests.cpp adjacency-list-tests)
