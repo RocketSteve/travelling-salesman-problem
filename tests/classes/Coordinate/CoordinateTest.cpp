@@ -1,6 +1,6 @@
 #include <catch2/catch_test_macros.hpp>
-#include "../../src/classes/Coordinate/Coordinate.h"
-#include "../../src/classes/Coordinate/Coordinate.cpp"
+#include "../../../src/classes/Coordinate/Coordinate.h"
+#include "../../../src/classes/Coordinate/Coordinate.cpp"
 #include <catch2/matchers/catch_matchers_floating_point.hpp>
 
 using namespace Catch::Matchers;

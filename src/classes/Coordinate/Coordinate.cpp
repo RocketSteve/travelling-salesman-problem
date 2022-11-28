@@ -1,11 +1,11 @@
 #include "Coordinate.h"
 #include  <ctgmath>
 
-double Coordinate::getLatitude() {
+double Coordinate::getLatitude() const {
     return this->mLatitude;
 }
 
-double Coordinate::getLongitude() {
+double Coordinate::getLongitude() const {
     return this->mLongitude;
 }
 
@@ -14,7 +14,7 @@ Coordinate::Coordinate(double latitude, double longitude) {
     this->mLongitude = longitude;
 }
 
-double Coordinate::getDistance(Coordinate point) {
+double Coordinate::getDistance(Coordinate point) const {
     double a = this->mLongitude - point.mLongitude;
     double b = this->mLatitude - point.mLatitude;
     double c_squared = pow(a,2) + pow(b,2);
