@@ -14,6 +14,8 @@ public:
     double getLongitude() const;
     double getDistance(Coordinate point) const;
     std::string to_string() const;
+
+    bool operator==(const Coordinate &other) const;
 };
 
 

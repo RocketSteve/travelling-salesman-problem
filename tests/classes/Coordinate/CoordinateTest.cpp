@@ -44,5 +44,10 @@ TEST_CASE("getDistance", "[Coordinate]") {
     }SECTION("Distance between the same points") {
         REQUIRE(coordinate.getDistance(coordinate) == 0);
     }
+}
 
+TEST_CASE("operator==", "[Coordinate]") {
+    auto coordinate = Coordinate(10, 15);
+    auto coordinate2 = Coordinate(10, 15);
+    REQUIRE(coordinate == coordinate2);
 }
