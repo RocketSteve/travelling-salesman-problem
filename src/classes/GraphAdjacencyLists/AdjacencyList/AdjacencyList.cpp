@@ -1,9 +1,5 @@
-#include <iostream>
-#include <string>
 #include <algorithm>
 #include "AdjacencyList.h"
-#include "Exceptions/DuplicateIdException.cpp"
-#include "Exceptions/NotExisitingIdException.cpp"
 
 using namespace std;
 
@@ -42,13 +38,20 @@ int AdjacencyList<ValueType>::getId() {
 template<typename ValueType>
 int AdjacencyList<ValueType>::getAdjacencyId(int index) {
     int currentIndex = 0;
-    for(auto& adjacency: this->adjacencyList){
-        if(currentIndex == index){
+    for (auto &adjacency: this->adjacencyList) {
+        if (currentIndex == index) {
             return adjacency;
         }
-        currentIndex ++;
+        currentIndex++;
     }
     return -1;
+}
+
+template<typename ValueType>
+bool AdjacencyList<ValueType>::operator==(const AdjacencyList<ValueType> &other) {
+    return this->id == other.id &&
+           this->value == other.value &&
+           this->adjacencyList == other.adjacencyList;
 }
 
 

@@ -54,3 +54,18 @@ TEST_CASE("removeAdjacency()", "[AdjacencyList]") {
     adjacencyList->getAdjacencyId(addedIdToAdjacencyList);
     REQUIRE(-1 == adjacencyList->getAdjacencyId(1));
 }
+
+TEST_CASE("operator!=()", "[AdjacencyList]") {
+    auto adjacencyList = new AdjacencyList<int>(1, (int) 5);
+    auto adjacencyList2 = new AdjacencyList<int>(1, (int) 5);
+    adjacencyList->pushAdjacency(2);
+    adjacencyList2->pushAdjacency(2);
+    REQUIRE(adjacencyList != adjacencyList2);
+}
+
+TEST_CASE("operator==()", "[AdjacencyList]") {
+    auto adjacencyList = new AdjacencyList<int>(1, (int) 5);
+    adjacencyList->pushAdjacency(2);
+    auto adjacencyList2 = &adjacencyList;
+    REQUIRE(&adjacencyList == adjacencyList2);
+}

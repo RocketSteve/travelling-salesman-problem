@@ -20,6 +20,8 @@ public:
     int getId();
     set<int> getAdjacencyList();
     int getAdjacencyId(int index);
+
+    bool operator==(const AdjacencyList<ValueType> &other);
 };
 
 
