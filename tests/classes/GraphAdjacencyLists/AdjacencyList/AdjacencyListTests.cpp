@@ -69,3 +69,11 @@ TEST_CASE("operator==()", "[AdjacencyList]") {
     auto adjacencyList2 = &adjacencyList;
     REQUIRE(&adjacencyList == adjacencyList2);
 }
+
+TEST_CASE("size()", "[AdjacencyList]") {
+    auto adjacencyList = new AdjacencyList<int>(1, (int) 5);
+    adjacencyList->pushAdjacency(2);
+    adjacencyList->pushAdjacency(3);
+    adjacencyList->pushAdjacency(1);
+    REQUIRE(adjacencyList->getSize() == 3);
+}

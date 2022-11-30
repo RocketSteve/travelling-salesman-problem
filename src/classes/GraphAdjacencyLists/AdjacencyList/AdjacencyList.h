@@ -14,12 +14,19 @@ private:
     set<int> adjacencyList;
 public:
     AdjacencyList(int id, ValueType value);
+
     ValueType getValue();
-    void pushAdjacency(int adjacencyId) ;
+
+    void pushAdjacency(int adjacencyId);
+
     void removeAdjacency(int adjacency);
+
     int getId();
-    set<int> getAdjacencyList();
+
     int getAdjacencyId(int index);
+
+    int getSize();
+
     bool operator==(const AdjacencyList<ValueType> &other);
 };
 

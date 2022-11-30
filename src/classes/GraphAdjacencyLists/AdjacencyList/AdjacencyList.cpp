@@ -26,11 +26,6 @@ void AdjacencyList<ValueType>::removeAdjacency(int adjacencyId) {
 }
 
 template<typename ValueType>
-set<int> AdjacencyList<ValueType>::getAdjacencyList() {
-    return this->adjacencyList;
-}
-
-template<typename ValueType>
 int AdjacencyList<ValueType>::getId() {
     return this->id;
 }
@@ -52,6 +47,11 @@ bool AdjacencyList<ValueType>::operator==(const AdjacencyList<ValueType> &other)
     return this->id == other.id &&
            this->value == other.value &&
            this->adjacencyList == other.adjacencyList;
+}
+
+template<typename ValueType>
+int AdjacencyList<ValueType>::getSize() {
+    return this->adjacencyList.size();
 }
 
 
