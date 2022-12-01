@@ -1,7 +1,3 @@
-//
-// Created by mateusz on 30.11.22.
-//
-
 #include "CoordinateWithVisitedState.h"
 
 CoordinateWithVisitedState::CoordinateWithVisitedState(double latitude, double longitude)
