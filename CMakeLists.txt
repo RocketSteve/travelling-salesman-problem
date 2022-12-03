@@ -29,3 +29,4 @@ add_test_and_executable(tests/classes/GraphAdjacencyLists/AdjacencyList/Adjacenc
 add_test_and_executable(tests/classes/GraphAdjacencyLists/GraphAdjacencyListsTests.cpp graph-adjacency-lists-tests)
 add_test_and_executable(tests/classes/Instance/InstanceTests.cpp instance-tests)
 add_test_and_executable(tests/classes/InstanceFileReader/InstanceFileReaderTests.cpp instance-file-reader-tests)
+add_test_and_executable(tests/classes/RandomInstanceGenerator/RandomInstanceGenerator.cpp random-instance-generator-tests)
