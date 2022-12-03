@@ -19,8 +19,8 @@ pair<string, string> split(const string &s, const string &delimiter) {
 }
 
 InstanceFileReader::InstanceFileReader(const string &filename) : Instance() {
-    system("pwd");
-    this->file.open(filename);
+    ifstream file;
+    file.open(filename);
     string line;
     char buffer[200];
     getcwd(buffer, sizeof(buffer));

@@ -11,8 +11,6 @@ using namespace std;
 
 class InstanceFileReader : public Instance {
 private:
-    ifstream file;
-
     void addVertexByLine(string line) const;
 
 public:
