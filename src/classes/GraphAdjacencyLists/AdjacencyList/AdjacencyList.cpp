@@ -9,7 +9,7 @@ AdjacencyList<ValueType>::AdjacencyList(int id, ValueType value) {
 }
 
 template<typename ValueType>
-ValueType AdjacencyList<ValueType>::getValue() {
+ValueType &AdjacencyList<ValueType>::getValue() {
     return this->value;
 }
 

@@ -22,12 +22,12 @@ int GreedySolver::findFirstVertex() const {
 
 int GreedySolver::nextVertex(int currentVertexId) const {
     auto vertex = this->instance.graph->getVertex(currentVertexId);
-    auto vertices = this->instance.graph->vertices;
     double distance = 0;
     int currentTheSmallestDistanceId = -1;
     for (auto &i: vertex.adjacencyList) {
         auto potentiallyNextVertexId = this->idToIndex.at(i);
-        AdjacencyList<CoordinateWithVisitedState> potentiallyNextVertex = vertices[potentiallyNextVertexId];
+        AdjacencyList<CoordinateWithVisitedState> potentiallyNextVertex = this->instance.graph->getVertex(
+                potentiallyNextVertexId);
         if (!potentiallyNextVertex.getValue().getVisited()) {
             double newDistance = vertex.getValue().getDistance(potentiallyNextVertex.getValue());
             if (newDistance > distance) {
@@ -36,6 +36,11 @@ int GreedySolver::nextVertex(int currentVertexId) const {
         }
     }
     return currentTheSmallestDistanceId;
+}
+
+void GreedySolver::addVertexToAnswer(int id) {
+    this->instance.graph->getVertex(id).getValue().visitCoordinate();
+    this->answer.push_back(id);
 }
 
 

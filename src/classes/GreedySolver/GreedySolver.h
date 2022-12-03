@@ -6,9 +6,10 @@
 class GreedySolver {
 private:
     Instance instance;
-    vector<int> answer;
     map<int, int> idToIndex;
 public:
+    vector<int> answer;
+
     explicit GreedySolver(Instance instance);
 
     int findFirstVertex() const;
@@ -16,6 +17,8 @@ public:
     int nextVertex(int currentVertexId) const;
 
     double solve();
+
+    void addVertexToAnswer(int id);
 };
 
 

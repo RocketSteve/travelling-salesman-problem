@@ -17,7 +17,7 @@ public:
 
     AdjacencyList(int id, ValueType value);
 
-    ValueType getValue();
+    ValueType &getValue();
 
     void pushAdjacency(int adjacencyId);
 

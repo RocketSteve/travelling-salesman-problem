@@ -28,3 +28,12 @@ TEST_CASE("nextVertex", "[GreedySolver]") {
     int id = greedySolver->nextVertex(firstId);
     REQUIRE(id == 29);
 }
+
+TEST_CASE("addVertexToAnswer", "[GreedySolver]") {
+    Instance instance = InstanceFileReader("resources/instance.txt");
+    auto greedySolver = new GreedySolver(instance);
+    int firstId = greedySolver->findFirstVertex();
+    greedySolver->addVertexToAnswer(firstId);
+    REQUIRE(greedySolver->answer[0] == firstId);
+    REQUIRE(instance.graph->getVertex(firstId).getValue().getVisited());
+}
