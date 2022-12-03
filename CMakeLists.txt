@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 14)
 include_directories(include)
 
 file(GLOB_RECURSE classes src/classes/*.h src/classes/*.cpp)
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/resources DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
 add_executable(main src/main.cpp)
 
@@ -27,3 +28,4 @@ add_test_and_executable(tests/classes/CoordinateWithVisitedState/CoordinateWithV
 add_test_and_executable(tests/classes/GraphAdjacencyLists/AdjacencyList/AdjacencyListTests.cpp adjacency-list-tests)
 add_test_and_executable(tests/classes/GraphAdjacencyLists/GraphAdjacencyListsTests.cpp graph-adjacency-lists-tests)
 add_test_and_executable(tests/classes/Instance/InstanceTests.cpp instance-tests)
+add_test_and_executable(tests/classes/InstanceFileReader/InstanceFileReaderTests.cpp instance-file-reader-tests)
