@@ -26,3 +26,4 @@ add_test_and_executable(tests/classes/Coordinate/CoordinateTest.cpp coordinate-t
 add_test_and_executable(tests/classes/CoordinateWithVisitedState/CoordinateWithVisitedState.cpp coordinate-with-visited-state-tests)
 add_test_and_executable(tests/classes/GraphAdjacencyLists/AdjacencyList/AdjacencyListTests.cpp adjacency-list-tests)
 add_test_and_executable(tests/classes/GraphAdjacencyLists/GraphAdjacencyListsTests.cpp graph-adjacency-lists-tests)
+add_test_and_executable(tests/classes/Instance/InstanceTests.cpp instance-tests)
