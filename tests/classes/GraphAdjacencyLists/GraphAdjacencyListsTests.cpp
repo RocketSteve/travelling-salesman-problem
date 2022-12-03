@@ -78,3 +78,17 @@ TEST_CASE("getIdByValue", "[GraphAdjacencyLists]") {
     graph->addVertex(2);
     REQUIRE(graph->getIdByValue((int) 2) == 0);
 }
+
+TEST_CASE("getIdToIndex", "[GraphAdjacencyLists]") {
+    auto graph = new GraphAdjacencyLists<int>();
+    graph->addVertex(0);
+    graph->addVertex(1);
+    graph->addVertex(2);
+    graph->addVertex(3);
+    graph->removeVertex(2);
+    graph->removeVertex(1);
+    auto idToIndex = graph->getIdToIndex();
+    for (int i = 0; i < graph->vertices.size(); i++) {
+        REQUIRE(idToIndex[graph->vertices[i].getId()] == i);
+    }
+}
