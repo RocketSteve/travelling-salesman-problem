@@ -9,9 +9,10 @@ using namespace std;
 template<typename ValueType>
 class GraphAdjacencyLists {
 private:
-    list <AdjacencyList<ValueType>> vertices;
     int idIterator = 0;
 public:
+    list <AdjacencyList<ValueType>> vertices;
+
     GraphAdjacencyLists() = default;
 
     void addVertex(ValueType value);
