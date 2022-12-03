@@ -1,7 +1,7 @@
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/matchers/catch_matchers.hpp>
-#include "../../../src/classes/Instance/Instance.h"
-#include "../../../src/classes/Instance/Instance.cpp"
+#include "../../../src/classes/InstanceFileReader/InstanceFileReader.h"
+#include "../../../src/classes/InstanceFileReader/InstanceFileReader.cpp"
 
 TEST_CASE("addVertex", "[Instance]") {
     auto instance = new Instance();
@@ -41,4 +41,18 @@ TEST_CASE("connectAllPoints", "[Instance]") {
     REQUIRE(checkConnectionWithThree(vertex0, vertex1, vertex2));
     REQUIRE(checkConnectionWithThree(vertex1, vertex0, vertex2));
     REQUIRE(checkConnectionWithThree(vertex2, vertex1, vertex0));
+}
+
+TEST_CASE("writeToFile", "[Instance]") {
+    auto instance = new Instance();
+    instance->addVertex(CoordinateWithVisitedState(0, 0));
+    instance->addVertex(CoordinateWithVisitedState(1, 2));
+    instance->addVertex(CoordinateWithVisitedState(3, 4));
+    instance->connectAllPoints();
+    string filename = "resources/test.txt";
+    instance->writeToFile(filename);
+    auto instanceFromFIle = new InstanceFileReader(filename);
+    REQUIRE(instance->graph->getVertex(0).getValue() == instanceFromFIle->graph->getVertex(0).getValue());
+    REQUIRE(instance->graph->getVertex(1).getValue() == instanceFromFIle->graph->getVertex(1).getValue());
+    REQUIRE(instance->graph->getVertex(2).getValue() == instanceFromFIle->graph->getVertex(2).getValue());
 }
