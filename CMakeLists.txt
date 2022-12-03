@@ -7,6 +7,7 @@ include_directories(include)
 
 file(GLOB_RECURSE classes src/classes/*.h src/classes/*.cpp)
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/resources DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+file(COPY ${CMAKE_CURRENT_BINARY_DIR}/resources DESTINATION ${CMAKE_CURRENT_SOURCE_DIR})
 
 add_executable(main src/main.cpp)
 
