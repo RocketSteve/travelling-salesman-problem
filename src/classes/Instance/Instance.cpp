@@ -17,3 +17,13 @@ void Instance::connectAllPoints() const {
         }
     }
 }
+
+void Instance::writeToFile(const string &filename) const {
+    fstream file;
+    file.open(filename.c_str(), ios::out | ios::in);
+    file << to_string(this->graph->getSize()) << endl;
+    for (AdjacencyList<CoordinateWithVisitedState> &i: this->graph->vertices) {
+        file << to_string(i.getValue().getLatitude()) << " " << to_string(i.getValue().getLongitude()) << endl;
+    }
+    file.close();
+}

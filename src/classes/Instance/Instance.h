@@ -17,6 +17,8 @@ public:
     void addVertex(CoordinateWithVisitedState point) const;
 
     void connectAllPoints() const;
+
+    void writeToFile(const string &filename) const;
 };
 
 
