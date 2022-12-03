@@ -19,3 +19,12 @@ TEST_CASE("findFirstVertex first id 1", "[GreedySolver]") {
     int id = greedySolver->findFirstVertex();
     REQUIRE(id == 1);
 }
+
+TEST_CASE("nextVertex", "[GreedySolver]") {
+    Instance instance = InstanceFileReader("resources/instance.txt");
+    auto greedySolver = new GreedySolver(instance);
+    int firstId = greedySolver->findFirstVertex();
+    instance.graph->getVertex(firstId).getValue().visitCoordinate();
+    int id = greedySolver->nextVertex(firstId);
+    REQUIRE(id == 29);
+}
