@@ -23,7 +23,8 @@ template<typename ValueType>
 void GraphAdjacencyLists<ValueType>::removeVertex(int id) {
     try {
         const AdjacencyList<ValueType> elementToRemove = this->getVertex(id);
-        this->vertices.remove(elementToRemove);
+        auto it = find(this->vertices.begin(), this->vertices.end(), elementToRemove);
+        this->vertices.erase(it);
     }
     catch (int id) {
         cout << "OperationNotAllowedException: vertex id " + to_string(id) + " don't exist" << endl;
@@ -82,4 +83,15 @@ int GraphAdjacencyLists<ValueType>::checkIfVertexIdExist(int id) {
         }
     }
     return isExist;
+}
+
+template<typename ValueType>
+map<int, int> GraphAdjacencyLists<ValueType>::getIdToIndex() {
+    int i = 0;
+    map<int, int> idToIndex;
+    for (AdjacencyList<ValueType> &object: this->vertices) {
+        idToIndex.insert(pair<int, int>(object.getId(), i));
+        i++;
+    }
+    return idToIndex;
 }

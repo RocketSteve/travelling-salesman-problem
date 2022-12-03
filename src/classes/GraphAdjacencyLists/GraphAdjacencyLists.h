@@ -2,6 +2,7 @@
 #define TRAVELLING_SALESMAN_PROBLEM_GRAPHADJACENCYLISTS_H
 
 #include <list>
+#include <map>
 #include "AdjacencyList/AdjacencyList.h"
 
 using namespace std;
@@ -11,7 +12,7 @@ class GraphAdjacencyLists {
 private:
     int idIterator = 0;
 public:
-    list <AdjacencyList<ValueType>> vertices;
+    vector<AdjacencyList<ValueType>> vertices;
 
     GraphAdjacencyLists() = default;
 
@@ -30,6 +31,8 @@ public:
     int getSize();
 
     int checkIfVertexIdExist(int id);
+
+    map<int, int> getIdToIndex();
 };
 
 #endif //TRAVELLING_SALESMAN_PROBLEM_GRAPHADJACENCYLISTS_H

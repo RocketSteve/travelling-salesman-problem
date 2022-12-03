@@ -1,5 +1,6 @@
 #ifndef TRAVELLING_SALESMAN_PROBLEM_ADJACENCYLIST_H
 #define TRAVELLING_SALESMAN_PROBLEM_ADJACENCYLIST_H
+
 #include <iostream>
 #include <iterator>
 #include <set>
@@ -11,8 +12,9 @@ class AdjacencyList {
 private:
     int id{};
     ValueType value;
-    set<int> adjacencyList;
 public:
+    set<int> adjacencyList;
+
     AdjacencyList(int id, ValueType value);
 
     ValueType getValue();
@@ -29,8 +31,6 @@ public:
 
     bool operator==(const AdjacencyList<ValueType> &other);
 };
-
-
 
 
 #endif //TRAVELLING_SALESMAN_PROBLEM_ADJACENCYLIST_H
