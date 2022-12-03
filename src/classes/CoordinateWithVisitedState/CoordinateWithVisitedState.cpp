@@ -4,6 +4,10 @@ CoordinateWithVisitedState::CoordinateWithVisitedState(double latitude, double l
         : Coordinate(latitude, longitude) {
 }
 
+CoordinateWithVisitedState::CoordinateWithVisitedState()
+        : Coordinate(0, 0) {
+}
+
 void CoordinateWithVisitedState::visitCoordinate() {
     this->visited = true;
 }

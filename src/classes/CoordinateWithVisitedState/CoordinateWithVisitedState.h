@@ -10,6 +10,8 @@ private:
 public:
     explicit CoordinateWithVisitedState(double latitude, double longitude);
 
+    explicit CoordinateWithVisitedState();
+
     void visitCoordinate();
 
     bool getVisited() const;
