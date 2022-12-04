@@ -23,5 +23,9 @@ jobs:
 
     - name: Test
       working-directory: ${{github.workspace}}/build
-      run: ctest -C ${{env.BUILD_TYPE}}
-
+      run: ctest -C ${{env.BUILD_TYPE}} --rerun-failed --output-on-failure
+    - name: Download a Build Artifact
+      uses: actions/download-artifact@v3.0.1
+      with:
+        name: build
+        path: ${{github.workspace}}/build
