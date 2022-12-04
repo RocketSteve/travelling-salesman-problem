@@ -20,7 +20,6 @@ FetchContent_Declare(
 )
 
 FetchContent_MakeAvailable(Catch2)
-find_package(Catch2 3 REQUIRED)
 
 enable_testing()
 
