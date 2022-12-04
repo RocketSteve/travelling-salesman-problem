@@ -11,6 +11,15 @@ file(COPY ${CMAKE_CURRENT_BINARY_DIR}/resources DESTINATION ${CMAKE_CURRENT_SOUR
 
 add_executable(main src/main.cpp)
 
+Include(FetchContent)
+
+FetchContent_Declare(
+        Catch2
+        GIT_REPOSITORY https://github.com/catchorg/Catch2.git
+        GIT_TAG v3.0.1 # or a later release
+)
+
+FetchContent_MakeAvailable(Catch2)
 find_package(Catch2 3 REQUIRED)
 
 enable_testing()
