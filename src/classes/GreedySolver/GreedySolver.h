@@ -7,6 +7,7 @@ class GreedySolver {
 private:
     Instance instance;
     map<int, int> idToIndex;
+    double distance = 0;
 public:
     vector<int> answer;
 
@@ -14,11 +15,13 @@ public:
 
     int findFirstVertex() const;
 
-    int nextVertex(int currentVertexId) const;
+    pair<int, double> nextVertex(int currentVertexId) const;
 
-    double solve();
+    void solve();
 
     void addVertexToAnswer(int id);
+
+    double getDistance() const;
 };
 
 
