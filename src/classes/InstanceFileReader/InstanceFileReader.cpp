@@ -22,19 +22,18 @@ InstanceFileReader::InstanceFileReader(const string &filename) : Instance() {
     ifstream file;
     file.open(filename);
     string line;
-    char buffer[200];
-    getcwd(buffer, sizeof(buffer));
-    string s(buffer);
     int size = 0;
     bool first = true;
     if (file.is_open()) {
-        while (file) {
+        while (true) {
             getline(file, line);
             if (first) {
                 size = stoi(line);
                 first = false;
             } else if (!line.empty())
                 addVertexByLine(line);
+            if (file.eof())
+                break;
         }
     }
     this->connectAllPoints();
