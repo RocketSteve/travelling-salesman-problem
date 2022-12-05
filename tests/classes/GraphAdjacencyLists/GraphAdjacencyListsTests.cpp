@@ -1,5 +1,4 @@
 #include <catch2/catch_test_macros.hpp>
-#include <catch2/matchers/catch_matchers.hpp>
 #include "../../../src/classes/GraphAdjacencyLists/GraphAdjacencyLists.h"
 #include "../../../src/classes/GraphAdjacencyLists/GraphAdjacencyLists.cpp"
 #include "../../../src/classes/GraphAdjacencyLists/AdjacencyList/AdjacencyList.cpp"
@@ -18,10 +17,20 @@ TEST_CASE("addVertex", "[GraphAdjacencyLists]") {
 TEST_CASE("getVertex", "[GraphAdjacencyLists]") {
     auto graph = new GraphAdjacencyLists<int>();
     graph->addVertex(1);
-    AdjacencyList<int> list = graph->getVertex(0);
-    REQUIRE(list.getId() == 0);
+    graph->addVertex(2);
+    graph->removeVertex(0);
+    AdjacencyList<int> list = graph->getVertex(1);
+    REQUIRE(list.getValue() == 2);
 }
 
+TEST_CASE("getVertexByIndex", "[GraphAdjacencyLists]") {
+    auto graph = new GraphAdjacencyLists<int>();
+    graph->addVertex(1);
+    graph->addVertex(2);
+    graph->removeVertex(0);
+    AdjacencyList<int> list = graph->getVertexByIndex(0);
+    REQUIRE(list.getValue() == 2);
+}
 
 TEST_CASE("removeVertex", "[GraphAdjacencyLists]") {
     auto graph = new GraphAdjacencyLists<int>();
