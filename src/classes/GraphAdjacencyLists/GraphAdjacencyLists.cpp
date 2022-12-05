@@ -11,10 +11,21 @@ void GraphAdjacencyLists<ValueType>::addVertex(ValueType value) {
 
 template<typename ValueType>
 AdjacencyList<ValueType> &GraphAdjacencyLists<ValueType>::getVertex(int id) {
-    if (id >= this->vertices.size() || id < 0) {
-        throw id;
+    for (AdjacencyList<ValueType> &i: this->vertices) {
+        if (i.getId() == id) {
+            return i;
+        }
     }
-    this->vertices[id];
+    throw id;
+}
+
+
+template<typename ValueType>
+AdjacencyList<ValueType> &GraphAdjacencyLists<ValueType>::getVertexByIndex(int index) {
+    if (index >= this->vertices.size() || index < 0) {
+        throw index;
+    }
+    return this->vertices.at(index);
 }
 
 template<typename ValueType>

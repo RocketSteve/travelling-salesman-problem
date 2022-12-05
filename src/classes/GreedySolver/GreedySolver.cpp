@@ -1,4 +1,4 @@
-#include <float.h>
+#include <cfloat>
 #include "GreedySolver.h"
 
 GreedySolver::GreedySolver(Instance instance) {
@@ -39,9 +39,9 @@ pair<int, double> GreedySolver::nextVertex(int currentVertexId) const {
     auto currentTheBestDistance = DBL_MAX;
     int currentTheBestId = -1;
     for (auto &i: vertex.adjacencyList) {
-        auto potentiallyNextVertexId = this->idToIndex.at(i);
-        AdjacencyList<CoordinateWithVisitedState> potentiallyNextVertex = this->instance.graph->getVertex(
-                potentiallyNextVertexId);
+        auto potentiallyNextVertexIndex = this->idToIndex.at(i);
+        AdjacencyList<CoordinateWithVisitedState> potentiallyNextVertex = this->instance.graph->getVertexByIndex(
+                potentiallyNextVertexIndex);
         if (!potentiallyNextVertex.getValue().getVisited()) {
             double newDistance = vertex.getValue().getDistance(potentiallyNextVertex.getValue());
             if (newDistance < currentTheBestDistance) {
