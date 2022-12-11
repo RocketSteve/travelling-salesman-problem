@@ -7,7 +7,7 @@
 class SimulatedAnnealingSolver {
 private:
     Instance *instance;
-    vector<int>
+//    vector<int>
 };
 
 

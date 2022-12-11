@@ -6,20 +6,20 @@
 class GreedySolver {
 private:
     Instance instance;
-    map<int, int> idToIndex;
     double distance = 0;
 public:
-    vector<int> answer;
+    vector<AdjacencyList<CoordinateWithVisitedState> *> answer = {};
 
     explicit GreedySolver(Instance instance);
 
-    int findFirstVertex() const;
+    AdjacencyList<CoordinateWithVisitedState> *findFirstVertex() const;
 
-    pair<int, double> nextVertex(int currentVertexId) const;
+    static pair<AdjacencyList<struct CoordinateWithVisitedState> *, double> nextVertex(
+            AdjacencyList<CoordinateWithVisitedState> *currentVertex);
 
     void solve();
 
-    void addVertexToAnswer(int id);
+    void addVertexToAnswer(AdjacencyList<CoordinateWithVisitedState> *vertex);
 
     double getDistance() const;
 };
