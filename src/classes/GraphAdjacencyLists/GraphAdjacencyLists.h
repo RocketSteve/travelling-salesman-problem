@@ -34,7 +34,7 @@ public:
 
     map<int, int> getIdToIndex();
 
-    AdjacencyList<ValueType> &getVertexByIndex(int index);
+    AdjacencyList<ValueType> *getVertexByIndex(int index);
 };
 
 #endif //TRAVELLING_SALESMAN_PROBLEM_GRAPHADJACENCYLISTS_H

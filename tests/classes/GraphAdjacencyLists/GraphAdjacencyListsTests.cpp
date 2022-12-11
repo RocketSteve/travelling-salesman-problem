@@ -27,7 +27,7 @@ TEST_CASE("getVertexByIndex", "[GraphAdjacencyLists]") {
     graph->addVertex(2);
     graph->removeVertex(0);
     auto list = graph->getVertexByIndex(0);
-    REQUIRE(list.getValue() == 2);
+    REQUIRE(list->getValue() == 2);
 }
 
 TEST_CASE("removeVertex", "[GraphAdjacencyLists]") {

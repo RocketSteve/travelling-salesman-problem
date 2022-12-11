@@ -23,7 +23,7 @@ AdjacencyList<ValueType> *GraphAdjacencyLists<ValueType>::getVertex(int id) {
 }
 
 template<typename ValueType>
-AdjacencyList<ValueType> &GraphAdjacencyLists<ValueType>::getVertexByIndex(int index) {
+AdjacencyList<ValueType> *GraphAdjacencyLists<ValueType>::getVertexByIndex(int index) {
     if (index >= this->vertices.size() || index < 0) {
         throw index;
     }
