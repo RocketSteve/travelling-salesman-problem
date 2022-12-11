@@ -33,6 +33,8 @@ public:
     bool checkIfVertexIdExist(int id);
 
     map<int, int> getIdToIndex();
+
+    AdjacencyList<ValueType> &getVertexByIndex(int index);
 };
 
 #endif //TRAVELLING_SALESMAN_PROBLEM_GRAPHADJACENCYLISTS_H

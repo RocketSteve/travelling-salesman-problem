@@ -23,6 +23,15 @@ AdjacencyList<ValueType> *GraphAdjacencyLists<ValueType>::getVertex(int id) {
 }
 
 template<typename ValueType>
+AdjacencyList<ValueType> &GraphAdjacencyLists<ValueType>::getVertexByIndex(int index) {
+    if (index >= this->vertices.size() || index < 0) {
+        throw index;
+    }
+    return this->vertices.at(index);
+}
+
+
+template<typename ValueType>
 void GraphAdjacencyLists<ValueType>::removeVertex(int id) {
     try {
         const AdjacencyList<ValueType> *elementToRemove = this->getVertex(id);
