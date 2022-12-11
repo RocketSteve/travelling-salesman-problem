@@ -94,14 +94,3 @@ bool GraphAdjacencyLists<ValueType>::checkIfVertexIdExist(int id) {
     }
     return isExist;
 }
-
-template<typename ValueType>
-map<int, int> GraphAdjacencyLists<ValueType>::getIdToIndex() {
-    int i = 0;
-    map<int, int> idToIndex;
-    for (AdjacencyList<ValueType> *object: this->vertices) {
-        idToIndex.insert(pair<int, int>(object->getId(), i));
-        i++;
-    }
-    return idToIndex;
-}

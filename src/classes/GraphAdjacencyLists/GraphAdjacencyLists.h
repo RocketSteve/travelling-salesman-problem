@@ -32,8 +32,6 @@ public:
 
     bool checkIfVertexIdExist(int id);
 
-    map<int, int> getIdToIndex();
-
     AdjacencyList<ValueType> *getVertexByIndex(int index);
 };
 
