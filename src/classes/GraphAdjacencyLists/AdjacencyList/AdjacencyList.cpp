@@ -14,14 +14,13 @@ ValueType &AdjacencyList<ValueType>::getValue() {
 }
 
 template<typename ValueType>
-void AdjacencyList<ValueType>::pushAdjacency(int adjacencyId) {
-    this->adjacencyList.insert(adjacencyId);
+void AdjacencyList<ValueType>::pushAdjacency(AdjacencyList<ValueType> *adjacency) {
+    this->adjacencyList.insert(adjacency);
 }
 
 template<typename ValueType>
-void AdjacencyList<ValueType>::removeAdjacency(int adjacencyId) {
-    this->adjacencyList.erase(adjacencyId);
-
+void AdjacencyList<ValueType>::removeAdjacency(AdjacencyList<ValueType> *adjacency) {
+    this->adjacencyList.erase(adjacency);
 }
 
 template<typename ValueType>
@@ -30,7 +29,7 @@ int AdjacencyList<ValueType>::getId() {
 }
 
 template<typename ValueType>
-int AdjacencyList<ValueType>::getAdjacencyId(int index) {
+AdjacencyList<ValueType> *AdjacencyList<ValueType>::getAdjacency(int index) {
     int currentIndex = 0;
     for (auto &adjacency: this->adjacencyList) {
         if (currentIndex == index) {
@@ -38,7 +37,7 @@ int AdjacencyList<ValueType>::getAdjacencyId(int index) {
         }
         currentIndex++;
     }
-    return -1;
+    return nullptr;
 }
 
 template<typename ValueType>

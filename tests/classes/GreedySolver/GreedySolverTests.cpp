@@ -27,7 +27,7 @@ TEST_CASE("nextVertex", "[GreedySolver]") {
     Instance instance = InstanceFileReader("resources/instance.txt");
     auto greedySolver = new GreedySolver(instance);
     int firstId = greedySolver->findFirstVertex();
-    instance.graph->getVertex(firstId).getValue().visitCoordinate();
+    instance.graph->getVertex(firstId)->getValue().visitCoordinate();
     int id = greedySolver->nextVertex(firstId).first;
     REQUIRE(id == 27);
 }
@@ -38,7 +38,7 @@ TEST_CASE("addVertexToAnswer", "[GreedySolver]") {
     int firstId = greedySolver->findFirstVertex();
     greedySolver->addVertexToAnswer(firstId);
     REQUIRE(greedySolver->answer[0] == firstId);
-    REQUIRE(instance.graph->getVertex(firstId).getValue().getVisited());
+    REQUIRE(instance.graph->getVertex(firstId)->getValue().getVisited());
 }
 
 TEST_CASE("solve", "[GreedySolver]") {

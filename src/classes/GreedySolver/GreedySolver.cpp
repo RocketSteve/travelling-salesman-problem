@@ -1,4 +1,4 @@
-#include <float.h>
+#include <cfloat>
 #include "GreedySolver.h"
 
 GreedySolver::GreedySolver(Instance instance) {
@@ -17,8 +17,8 @@ void GreedySolver::solve() {
         this->addVertexToAnswer(currentVertex.first);
     }
     auto lastIndex = this->answer[this->answer.size() - 1];
-    auto lastVertex = this->instance.graph->getVertex(lastIndex).getValue();
-    auto firstVertex = this->instance.graph->getVertex(firstVertexId).getValue();
+    auto lastVertex = this->instance.graph->getVertex(lastIndex)->getValue();
+    auto firstVertex = this->instance.graph->getVertex(firstVertexId)->getValue();
     this->distance += lastVertex.getDistance(firstVertex);
     this->addVertexToAnswer(firstVertexId);
 }
@@ -38,14 +38,14 @@ pair<int, double> GreedySolver::nextVertex(int currentVertexId) const {
     auto vertex = this->instance.graph->getVertex(currentVertexId);
     auto currentTheBestDistance = DBL_MAX;
     int currentTheBestId = -1;
-    for (auto &i: vertex.adjacencyList) {
-        auto potentiallyNextVertexId = this->idToIndex.at(i);
-        AdjacencyList<CoordinateWithVisitedState> potentiallyNextVertex = this->instance.graph->getVertex(
+    for (auto i: vertex->adjacencyList) {
+        auto potentiallyNextVertexId = this->idToIndex.at(i->getId());
+        AdjacencyList<CoordinateWithVisitedState> *potentiallyNextVertex = this->instance.graph->getVertex(
                 potentiallyNextVertexId);
-        if (!potentiallyNextVertex.getValue().getVisited()) {
-            double newDistance = vertex.getValue().getDistance(potentiallyNextVertex.getValue());
+        if (!potentiallyNextVertex->getValue().getVisited()) {
+            double newDistance = vertex->getValue().getDistance(potentiallyNextVertex->getValue());
             if (newDistance < currentTheBestDistance) {
-                currentTheBestId = potentiallyNextVertex.getId();
+                currentTheBestId = potentiallyNextVertex->getId();
                 currentTheBestDistance = newDistance;
             }
         }
@@ -54,7 +54,7 @@ pair<int, double> GreedySolver::nextVertex(int currentVertexId) const {
 }
 
 void GreedySolver::addVertexToAnswer(int id) {
-    this->instance.graph->getVertex(id).getValue().visitCoordinate();
+    this->instance.graph->getVertex(id)->getValue().visitCoordinate();
     this->answer.push_back(id);
 }
 

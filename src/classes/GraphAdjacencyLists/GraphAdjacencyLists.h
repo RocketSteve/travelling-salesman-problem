@@ -12,7 +12,7 @@ class GraphAdjacencyLists {
 private:
     int idIterator = 0;
 public:
-    vector<AdjacencyList<ValueType>> vertices;
+    vector<AdjacencyList<ValueType> *> vertices;
 
     GraphAdjacencyLists() = default;
 
@@ -20,17 +20,17 @@ public:
 
     void removeVertex(int id);
 
-    AdjacencyList<ValueType> &getVertex(int id);
+    AdjacencyList<ValueType> *getVertex(int id);
 
     void addAdjacencyToVertex(int vertexId, int adjacencyId);
 
-    void removeAdjacencyToVertex(int vertexId, int adjacencyId);
+    void removeAdjacencyFromVertex(int vertexId, int adjacencyId);
 
     int getIdByValue(ValueType value);
 
     int getSize();
 
-    int checkIfVertexIdExist(int id);
+    bool checkIfVertexIdExist(int id);
 
     map<int, int> getIdToIndex();
 };
