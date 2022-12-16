@@ -10,17 +10,15 @@ TEST_CASE("constructor", "[GraphAdjacencyLists]") {
 TEST_CASE("addVertex", "[GraphAdjacencyLists]") {
     auto graph = new GraphAdjacencyLists<int>();
     graph->addVertex(1);
-    AdjacencyList<int> list = graph->getVertex(0);
-    REQUIRE(list.getId() == 0);
+    AdjacencyList<int> *list = graph->getVertex(0);
+    REQUIRE(list->getId() == 0);
 }
 
 TEST_CASE("getVertex", "[GraphAdjacencyLists]") {
     auto graph = new GraphAdjacencyLists<int>();
     graph->addVertex(1);
-    graph->addVertex(2);
-    graph->removeVertex(0);
-    AdjacencyList<int> list = graph->getVertex(1);
-    REQUIRE(list.getValue() == 2);
+    AdjacencyList<int> *list = graph->getVertex(0);
+    REQUIRE(list->getId() == 0);
 }
 
 TEST_CASE("getVertexByIndex", "[GraphAdjacencyLists]") {
@@ -28,8 +26,8 @@ TEST_CASE("getVertexByIndex", "[GraphAdjacencyLists]") {
     graph->addVertex(1);
     graph->addVertex(2);
     graph->removeVertex(0);
-    AdjacencyList<int> list = graph->getVertexByIndex(0);
-    REQUIRE(list.getValue() == 2);
+    auto list = graph->getVertexByIndex(0);
+    REQUIRE(list->getValue() == 2);
 }
 
 TEST_CASE("removeVertex", "[GraphAdjacencyLists]") {
@@ -38,7 +36,7 @@ TEST_CASE("removeVertex", "[GraphAdjacencyLists]") {
     graph->addVertex(1);
     graph->removeVertex(1);
     auto vertex = graph->getVertex(0);
-    REQUIRE(vertex.getId() == 0);
+    REQUIRE(vertex->getId() == 0);
     REQUIRE(graph->getSize() == 1);
 }
 
@@ -47,31 +45,32 @@ TEST_CASE("addAdjacencyToVertex", "[GraphAdjacencyLists]") {
     graph->addVertex(0);
     graph->addVertex(1);
     graph->addAdjacencyToVertex(0, 1);
-    REQUIRE(graph->getVertex(0).getAdjacencyId(0) == 1);
+    auto vertex = graph->getVertex(1);
+    REQUIRE(graph->getVertex(0)->getAdjacency(0) == vertex);
 }
 
 TEST_CASE("addAdjacencyToVertex not valid", "[GraphAdjacencyLists]") {
     auto graph = new GraphAdjacencyLists<int>();
     graph->addVertex(0);
     graph->addAdjacencyToVertex(0, 1);
-    graph->getVertex(0).getAdjacencyId(0);
-    REQUIRE(graph->getVertex(0).getAdjacencyId(0) == -1);
+    graph->getVertex(0)->getAdjacency(0);
+    REQUIRE(graph->getVertex(0)->getAdjacency(0) == nullptr);
     graph->addAdjacencyToVertex(1, 0);
 }
 
-TEST_CASE("removeAdjacencyToVertex", "[GraphAdjacencyLists]") {
+TEST_CASE("removeAdjacencyFromVertex", "[GraphAdjacencyLists]") {
     auto graph = new GraphAdjacencyLists<int>();
     graph->addVertex(0);
     graph->addVertex(1);
     graph->addAdjacencyToVertex(0, 1);
-    graph->removeAdjacencyToVertex(0, 1);
-    graph->getVertex(0).getAdjacencyId(0);
-    REQUIRE(graph->getVertex(0).getAdjacencyId(0) == -1);
+    graph->removeAdjacencyFromVertex(0, 1);
+    graph->getVertex(0)->getAdjacency(0);
+    REQUIRE(graph->getVertex(0)->getAdjacency(0) == nullptr);
 }
 
-TEST_CASE("removeAdjacencyToVertex not valid", "[GraphAdjacencyLists]") {
+TEST_CASE("removeAdjacencyFromVertex not valid", "[GraphAdjacencyLists]") {
     auto graph = new GraphAdjacencyLists<int>();
-    graph->removeAdjacencyToVertex(0, 1);
+    graph->removeAdjacencyFromVertex(0, 1);
 }
 
 
@@ -86,18 +85,4 @@ TEST_CASE("getIdByValue", "[GraphAdjacencyLists]") {
     auto graph = new GraphAdjacencyLists<int>();
     graph->addVertex(2);
     REQUIRE(graph->getIdByValue((int) 2) == 0);
-}
-
-TEST_CASE("getIdToIndex", "[GraphAdjacencyLists]") {
-    auto graph = new GraphAdjacencyLists<int>();
-    graph->addVertex(0);
-    graph->addVertex(1);
-    graph->addVertex(2);
-    graph->addVertex(3);
-    graph->removeVertex(2);
-    graph->removeVertex(1);
-    auto idToIndex = graph->getIdToIndex();
-    for (int i = 0; i < graph->vertices.size(); i++) {
-        REQUIRE(idToIndex[graph->vertices[i].getId()] == i);
-    }
 }

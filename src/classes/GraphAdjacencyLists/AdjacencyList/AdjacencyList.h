@@ -1,6 +1,7 @@
 #ifndef TRAVELLING_SALESMAN_PROBLEM_ADJACENCYLIST_H
 #define TRAVELLING_SALESMAN_PROBLEM_ADJACENCYLIST_H
 
+#include <memory>
 #include <iostream>
 #include <iterator>
 #include <set>
@@ -13,19 +14,19 @@ private:
     int id{};
     ValueType value;
 public:
-    set<int> adjacencyList;
+    set<AdjacencyList<ValueType> *> adjacencyList;
 
     AdjacencyList(int id, ValueType value);
 
     ValueType &getValue();
 
-    void pushAdjacency(int adjacencyId);
+    void pushAdjacency(AdjacencyList<ValueType> *adjacency);
 
-    void removeAdjacency(int adjacency);
+    void removeAdjacency(AdjacencyList<ValueType> *adjacency);
 
     int getId();
 
-    int getAdjacencyId(int index);
+    AdjacencyList<ValueType> *getAdjacency(int index);
 
     int getSize();
 

@@ -3,59 +3,49 @@
 
 GreedySolver::GreedySolver(Instance instance) {
     this->instance = instance;
-    this->idToIndex = this->instance.graph->getIdToIndex();
 }
 
 void GreedySolver::solve() {
-    int firstVertexId = this->findFirstVertex();
+    auto firstVertex = this->findFirstVertex();
     this->answer.clear();
     this->distance = 0;
-    this->addVertexToAnswer(firstVertexId);
-    auto currentVertex = pair<int, double>(0, 0);
-    while ((currentVertex = this->nextVertex(currentVertex.first)).first != -1) {
+    this->addVertexToAnswer(firstVertex);
+    auto currentVertex = pair<AdjacencyList<CoordinateWithVisitedState> *, double>(firstVertex, 0);
+    while ((currentVertex = GreedySolver::nextVertex(currentVertex.first)).first != nullptr) {
         this->distance += currentVertex.second;
         this->addVertexToAnswer(currentVertex.first);
     }
-    auto lastIndex = this->answer[this->answer.size() - 1];
-    auto lastVertex = this->instance.graph->getVertex(lastIndex).getValue();
-    auto firstVertex = this->instance.graph->getVertex(firstVertexId).getValue();
-    this->distance += lastVertex.getDistance(firstVertex);
-    this->addVertexToAnswer(firstVertexId);
+    auto lastVertex = this->answer[this->answer.size() - 1];
+    this->distance += lastVertex->getValue().getDistance(firstVertex->getValue());
+    this->addVertexToAnswer(firstVertex);
 }
 
-int GreedySolver::findFirstVertex() const {
-    if (this->instance.graph->getSize() > 0) {
-        int firstIndex = 0;
-        while (!this->instance.graph->checkIfVertexIdExist(firstIndex)) {
-            firstIndex++;
-        }
-        return firstIndex;
+AdjacencyList<CoordinateWithVisitedState> *GreedySolver::findFirstVertex() const {
+    if (this->instance.graph->getSize() < 1) {
+        return nullptr;
     }
-    return -1;
+    return this->instance.graph->vertices[0];
 }
 
-pair<int, double> GreedySolver::nextVertex(int currentVertexId) const {
-    auto vertex = this->instance.graph->getVertex(currentVertexId);
+pair<AdjacencyList<CoordinateWithVisitedState> *, double> GreedySolver::nextVertex(
+        AdjacencyList<CoordinateWithVisitedState> *currentVertex) {
     auto currentTheBestDistance = DBL_MAX;
-    int currentTheBestId = -1;
-    for (auto &i: vertex.adjacencyList) {
-        auto potentiallyNextVertexIndex = this->idToIndex.at(i);
-        AdjacencyList<CoordinateWithVisitedState> potentiallyNextVertex = this->instance.graph->getVertexByIndex(
-                potentiallyNextVertexIndex);
-        if (!potentiallyNextVertex.getValue().getVisited()) {
-            double newDistance = vertex.getValue().getDistance(potentiallyNextVertex.getValue());
+    AdjacencyList<CoordinateWithVisitedState> *currentTheBest = nullptr;
+    for (auto potentiallyNextVertex: currentVertex->adjacencyList) {
+        if (!potentiallyNextVertex->getValue().getVisited()) {
+            double newDistance = currentVertex->getValue().getDistance(potentiallyNextVertex->getValue());
             if (newDistance < currentTheBestDistance) {
-                currentTheBestId = potentiallyNextVertex.getId();
+                currentTheBest = potentiallyNextVertex;
                 currentTheBestDistance = newDistance;
             }
         }
     }
-    return pair<int, double>(currentTheBestId, currentTheBestDistance);
+    return pair<AdjacencyList<CoordinateWithVisitedState> *, double>(currentTheBest, currentTheBestDistance);
 }
 
-void GreedySolver::addVertexToAnswer(int id) {
-    this->instance.graph->getVertex(id).getValue().visitCoordinate();
-    this->answer.push_back(id);
+void GreedySolver::addVertexToAnswer(AdjacencyList<CoordinateWithVisitedState> *vertex) {
+    vertex->getValue().visitCoordinate();
+    this->answer.push_back(vertex);
 }
 
 double GreedySolver::getDistance() const {

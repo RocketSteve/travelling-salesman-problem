@@ -13,8 +13,8 @@ TEST_CASE("constructor", "[InstanceFileReaderTests]") {
     coordinates[2] = CoordinateWithVisitedState(7, 5);
     coordinates[3] = CoordinateWithVisitedState(5, 4);
     REQUIRE(instance->graph->getSize() == 4);
-    for (AdjacencyList<CoordinateWithVisitedState> &i: instance->graph->vertices) {
-        REQUIRE(i.getSize() == 3);
-        REQUIRE(i.getValue() == coordinates[i.getId()]);
+    for (AdjacencyList<CoordinateWithVisitedState> *i: instance->graph->vertices) {
+        REQUIRE(i->getSize() == 3);
+        REQUIRE(i->getValue() == coordinates[i->getId()]);
     }
 }
