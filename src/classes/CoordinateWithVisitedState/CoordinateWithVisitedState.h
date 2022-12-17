@@ -2,7 +2,6 @@
 #define TRAVELLING_SALESMAN_PROBLEM_COORDINATEWITHVISTIEDSTATE_H
 
 #include "../Coordinate/Coordinate.h"
-#include "../Coordinate/Coordinate.cpp"
 
 class CoordinateWithVisitedState : public Coordinate {
 private:

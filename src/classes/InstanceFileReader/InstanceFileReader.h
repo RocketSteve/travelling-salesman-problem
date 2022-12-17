@@ -5,7 +5,6 @@
 #include <iostream>
 #include <fstream>
 #include "../Instance/Instance.h"
-#include "../Instance/Instance.cpp"
 
 using namespace std;
 

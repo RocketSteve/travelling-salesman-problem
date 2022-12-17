@@ -20,6 +20,7 @@ AdjacencyList<ValueType> *GraphAdjacencyLists<ValueType>::getVertex(int id) {
     } else {
         throw id;
     }
+    return nullptr;
 }
 
 template<typename ValueType>
@@ -94,3 +95,9 @@ bool GraphAdjacencyLists<ValueType>::checkIfVertexIdExist(int id) {
     }
     return isExist;
 }
+
+template
+class GraphAdjacencyLists<CoordinateWithVisitedState>;
+
+template
+class GraphAdjacencyLists<int>;

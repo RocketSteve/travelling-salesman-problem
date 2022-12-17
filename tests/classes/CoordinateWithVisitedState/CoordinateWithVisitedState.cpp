@@ -1,7 +1,6 @@
-#include "../../../src/classes/CoordinateWithVisitedState/CoordinateWithVisitedState.h"
-#include "../../../src/classes/CoordinateWithVisitedState/CoordinateWithVisitedState.cpp"
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/matchers/catch_matchers_floating_point.hpp>
+#include "../../../src/classes/GreedySolver/GreedySolver.h"
 
 using namespace Catch::Matchers;
 

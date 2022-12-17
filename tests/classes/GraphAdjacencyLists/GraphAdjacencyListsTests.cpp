@@ -1,7 +1,6 @@
 #include <catch2/catch_test_macros.hpp>
-#include "../../../src/classes/GraphAdjacencyLists/GraphAdjacencyLists.h"
-#include "../../../src/classes/GraphAdjacencyLists/GraphAdjacencyLists.cpp"
-#include "../../../src/classes/GraphAdjacencyLists/AdjacencyList/AdjacencyList.cpp"
+#include "../../../src/classes/GreedySolver/GreedySolver.h"
+
 
 TEST_CASE("constructor", "[GraphAdjacencyLists]") {
     GraphAdjacencyLists<int>();

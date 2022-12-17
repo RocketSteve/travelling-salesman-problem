@@ -3,11 +3,12 @@
 
 #include <list>
 #include <map>
+#include <vector>
 #include "AdjacencyList/AdjacencyList.h"
 
 using namespace std;
 
-template<typename ValueType>
+template<class ValueType>
 class GraphAdjacencyLists {
 private:
     int idIterator = 0;

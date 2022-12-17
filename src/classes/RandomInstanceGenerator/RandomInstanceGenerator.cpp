@@ -1,6 +1,4 @@
 #include "RandomInstanceGenerator.h"
-#include "../../../src/classes/Instance/Instance.h"
-#include "../../../src/classes/Instance/Instance.cpp"
 
 RandomInstanceGenerator::RandomInstanceGenerator(int size) {
     while (this->graph->getSize() != size) {
