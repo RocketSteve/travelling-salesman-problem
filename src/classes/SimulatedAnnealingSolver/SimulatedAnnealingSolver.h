@@ -9,7 +9,6 @@
 
 class SimulatedAnnealingSolver {
 private:
-    Instance *instance;
     double temperature;
     double stoppingTemperature{};
     int stoppingIteration;
@@ -17,8 +16,6 @@ private:
     double currentDistance{};
     float alpha;
     vector<AdjacencyList<CoordinateWithVisitedState> *> currentAnswer = {};
-
-    static double generateRandomNumber(double from, double to);
 
     void newTemperature();
 
@@ -35,9 +32,9 @@ public:
 
     double getDistance() const;
 
-    double probabilityAccept(double probabilityDistance);
+    double probabilityAccept(double probabilityDistance) const;
 
-    void accept(vector<AdjacencyList<CoordinateWithVisitedState> *> candidate);
+    void accept(const vector<AdjacencyList<CoordinateWithVisitedState> *> &candidate);
 
     void solve();
 };
