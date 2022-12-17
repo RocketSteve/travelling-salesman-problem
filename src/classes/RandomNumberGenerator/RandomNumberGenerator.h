@@ -7,7 +7,7 @@ using namespace std;
 
 class RandomNumberGenerator {
 public:
-    static double generete(double from, double to);
+    static double generate(double from, double to);
 };
 
 
