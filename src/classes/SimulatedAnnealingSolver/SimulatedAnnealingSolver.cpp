@@ -58,7 +58,6 @@ void SimulatedAnnealingSolver::accept(const vector<AdjacencyList<CoordinateWithV
         }
     } else {
         if (RandomNumberGenerator::generate(0.0, 1.0) < this->probabilityAccept(candidateDistance)) {
-            cout << currentDistance << endl;
             this->currentDistance = candidateDistance;
             this->currentAnswer = candidate;
         }
@@ -71,13 +70,12 @@ void SimulatedAnnealingSolver::solve() {
         vector<AdjacencyList<CoordinateWithVisitedState> *> candidate;
         candidate.assign(this->currentAnswer.begin(), this->currentAnswer.end());
         auto l = (int) RandomNumberGenerator::generate(2, (double) this->currentAnswer.size() - 1);
-        auto i = (int) RandomNumberGenerator::generate(0, (double) this->currentAnswer.size() - l);
+        auto i = (int) RandomNumberGenerator::generate(1, (double) this->currentAnswer.size() - l);
         reverse(candidate.begin() + i, candidate.begin() + i + l);
         this->accept(candidate);
         this->newTemperature();
         iteration++;
     }
-    cout << iteration << endl;
 }
 
 void SimulatedAnnealingSolver::newTemperature() {

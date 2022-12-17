@@ -3,7 +3,7 @@
 #include "../../../src/classes/GreedySolver/GreedySolver.h"
 #include "../../../src/classes/RandomInstanceGenerator/RandomInstanceGenerator.h"
 
-TEST_CASE("constructor", "[RandomInstanceGenerator]") {
-    auto randomInstanceGenerator = new RandomInstanceGenerator(5);
+TEST_CASE("constructor", "[RandomInstanceGeneratorTests]") {
+    auto randomInstanceGenerator = new RandomInstanceGeneratorTests(5);
     REQUIRE(randomInstanceGenerator->graph->getSize() == 5);
 }
