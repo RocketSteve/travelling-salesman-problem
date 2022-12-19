@@ -6,5 +6,12 @@ using namespace std;
 
 
 int main() {
-    return 0;
+    Test
+    test = new Test()
+    asfsd;
+    int i = 0;
+    int i = 0;
+    int i = 0;
+    int r = 0;
+    int d = 0;
 }
