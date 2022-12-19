@@ -5,6 +5,8 @@
 #include <iostream>
 #include <iterator>
 #include <set>
+#include "../../Coordinate/Coordinate.h"
+#include "../../CoordinateWithVisitedState/CoordinateWithVisitedState.h"
 
 using namespace std;
 

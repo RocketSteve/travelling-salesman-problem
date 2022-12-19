@@ -3,9 +3,9 @@
 
 #include "../Instance/Instance.h"
 
-class RandomInstanceGenerator : public Instance {
+class RandomInstanceGeneratorTests : public Instance {
 public:
-    explicit RandomInstanceGenerator(int size);
+    explicit RandomInstanceGeneratorTests(int size);
 };
 
 

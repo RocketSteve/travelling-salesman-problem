@@ -2,8 +2,7 @@
 #include <catch2/matchers/catch_matchers.hpp>
 #include <catch2/matchers/catch_matchers_floating_point.hpp>
 #include "../../../src/classes/GreedySolver/GreedySolver.h"
-#include "../../../src/classes/GreedySolver/GreedySolver.cpp"
-#include "../../../src/classes/InstanceFileReader/InstanceFileReader.cpp"
+#include "src/classes/InstanceFileReader/InstanceFileReader.h"
 
 using namespace Catch::Matchers;
 
@@ -28,7 +27,7 @@ TEST_CASE("nextVertex", "[GreedySolver]") {
     auto greedySolver = new GreedySolver(instance);
     auto first = greedySolver->findFirstVertex();
     first->getValue().visitCoordinate();
-    auto next = greedySolver->nextVertex(first).first;
+    auto next = GreedySolver::nextVertex(first).first;
     REQUIRE(next->getId() == 27);
 }
 

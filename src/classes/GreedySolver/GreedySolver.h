@@ -2,6 +2,9 @@
 #define TRAVELLING_SALESMAN_PROBLEM_GREEDYSOLVER_H
 
 #include "../Instance/Instance.h"
+#include "../GraphAdjacencyLists/GraphAdjacencyLists.h"
+#include "../GraphAdjacencyLists/AdjacencyList/AdjacencyList.h"
+#include "../CoordinateWithVisitedState/CoordinateWithVisitedState.h"
 
 class GreedySolver {
 private:

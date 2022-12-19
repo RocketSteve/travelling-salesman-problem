@@ -1,6 +1,5 @@
 #include <fstream>
 #include "Instance.h"
-#include "../GraphAdjacencyLists/AdjacencyList/AdjacencyList.cpp"
 
 void Instance::addVertex(CoordinateWithVisitedState point) const {
     this->graph->addVertex(CoordinateWithVisitedState(point.getLatitude(), point.getLongitude()));

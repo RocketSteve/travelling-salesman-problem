@@ -1,11 +1,10 @@
 #include "RandomInstanceGenerator.h"
-#include "../../../src/classes/Instance/Instance.h"
-#include "../../../src/classes/Instance/Instance.cpp"
+#include "../RandomNumberGenerator/RandomNumberGenerator.h"
 
-RandomInstanceGenerator::RandomInstanceGenerator(int size) {
+RandomInstanceGeneratorTests::RandomInstanceGeneratorTests(int size) {
     while (this->graph->getSize() != size) {
-        double latitude = rand() % 100000;
-        double longitude = rand() % 100000;
+        double latitude = RandomNumberGenerator::generate(0, 100000);
+        double longitude = RandomNumberGenerator::generate(0, 100000);
         this->addVertex(CoordinateWithVisitedState(latitude, longitude));
     }
 }

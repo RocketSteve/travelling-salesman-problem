@@ -2,9 +2,7 @@
 #define TRAVELLING_SALESMAN_PROBLEM_INSTANCE_H
 
 #include "../GraphAdjacencyLists/GraphAdjacencyLists.h"
-#include "../GraphAdjacencyLists/GraphAdjacencyLists.cpp"
 #include "../CoordinateWithVisitedState/CoordinateWithVisitedState.h"
-#include "../CoordinateWithVisitedState/CoordinateWithVisitedState.cpp"
 
 class Instance {
 public:

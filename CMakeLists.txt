@@ -5,11 +5,12 @@ set(CMAKE_CXX_STANDARD 14)
 
 include_directories(include)
 
-file(GLOB_RECURSE classes src/classes/*.h src/classes/*.cpp)
+file(GLOB_RECURSE classes src/classes/*.cpp)
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/resources DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 file(COPY ${CMAKE_CURRENT_BINARY_DIR}/resources DESTINATION ${CMAKE_CURRENT_SOURCE_DIR})
 
-add_executable(main src/main.cpp)
+add_executable(main src/main.cpp ${classes})
+
 
 Include(FetchContent)
 
@@ -24,8 +25,9 @@ FetchContent_MakeAvailable(Catch2)
 enable_testing()
 
 function(add_test_and_executable src name)
-    add_executable(${name} ${src})
+    add_executable(${name} ${src} ${classes})
     target_link_libraries(${name} PRIVATE Catch2::Catch2WithMain)
+    target_include_directories(${name} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
     add_test(NAME ${name} COMMAND ${name})
 endfunction()
 
@@ -38,5 +40,7 @@ add_test_and_executable(tests/classes/GraphAdjacencyLists/AdjacencyList/Adjacenc
 add_test_and_executable(tests/classes/GraphAdjacencyLists/GraphAdjacencyListsTests.cpp graph-adjacency-lists-tests)
 add_test_and_executable(tests/classes/Instance/InstanceTests.cpp instance-tests)
 add_test_and_executable(tests/classes/InstanceFileReader/InstanceFileReaderTests.cpp instance-file-reader-tests)
-add_test_and_executable(tests/classes/RandomInstanceGenerator/RandomInstanceGenerator.cpp random-instance-generator-tests)
+add_test_and_executable(tests/classes/RandomInstanceGenerator/RandomInstanceGeneratorTests.cpp random-instance-generator-tests)
 add_test_and_executable(tests/classes/GreedySolver/GreedySolverTests.cpp greedy-solver-tests)
+add_test_and_executable(tests/classes/SimulatedAnnealingSolver/SimulatedAnnealingSolverTests.cpp simulated-annealing-solver-tests)
+add_test_and_executable(tests/classes/RandomNumberGenerator/RandomNumberGeneratorTests.cpp random-number-generator-tests)

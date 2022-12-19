@@ -1,8 +1,8 @@
 #include <iostream>
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/matchers/catch_matchers.hpp>
+#include "../../../src/classes/GreedySolver/GreedySolver.h"
 #include "../../../src/classes/InstanceFileReader/InstanceFileReader.h"
-#include "../../../src/classes/InstanceFileReader/InstanceFileReader.cpp"
 
 TEST_CASE("constructor", "[InstanceFileReaderTests]") {
     auto instance = new InstanceFileReader("resources/test_instance.txt");
