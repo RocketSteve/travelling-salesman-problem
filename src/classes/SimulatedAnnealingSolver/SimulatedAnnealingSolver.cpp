@@ -8,17 +8,10 @@ using namespace std;
 SimulatedAnnealingSolver::SimulatedAnnealingSolver(Instance *instance, double stoppingTemperature,
                                                    float temperature, int stoppingIteration,
                                                    float alpha) {
-    this->temperature = temperature;
     this->stoppingTemperature = stoppingTemperature;
     this->stoppingIteration = stoppingIteration;
     this->alpha = alpha;
-
-    GreedySolver greedySolver = *new GreedySolver(*instance);
-    greedySolver.solve();
-    this->answer = greedySolver.answer;
-    this->currentAnswer = answer;
-    this->distance = greedySolver.getDistance();
-    this->currentDistance = greedySolver.getDistance();
+    this->instance = *instance;
 }
 
 double SimulatedAnnealingSolver::calculateDistance(
@@ -44,12 +37,14 @@ void SimulatedAnnealingSolver::calculateDistance() {
 }
 
 double SimulatedAnnealingSolver::probabilityAccept(double probabilityDistance) const {
-    return exp(-(probabilityDistance - this->distance) / this->temperature);
+    return exp(-(probabilityDistance - this->currentDistance) / this->temperature);
 }
 
 void SimulatedAnnealingSolver::accept(const vector<AdjacencyList<CoordinateWithVisitedState> *> &candidate) {
     auto candidateDistance = this->calculateDistance(candidate);
+//    cout << to_string(candidateDistance);
     if (candidateDistance < this->currentDistance) {
+//        cout << " ACCEPTED";
         this->currentDistance = candidateDistance;
         this->currentAnswer = candidate;
         if (candidateDistance < distance) {
@@ -57,14 +52,19 @@ void SimulatedAnnealingSolver::accept(const vector<AdjacencyList<CoordinateWithV
             this->answer = candidate;
         }
     } else {
+//        cout << " CHECK TEMPERATURE: " << to_string(temperature);
         if (RandomNumberGenerator::generate(0.0, 1.0) < this->probabilityAccept(candidateDistance)) {
             this->currentDistance = candidateDistance;
             this->currentAnswer = candidate;
+//            cout << " ACCEPTED";
         }
     }
+//    cout << endl;
 }
 
 void SimulatedAnnealingSolver::solve() {
+    this->greedySolve();
+    this->temperature = this->distance * (5.0 / 100);
     int iteration = 0;
     while (this->temperature >= this->stoppingTemperature && this->stoppingIteration > iteration) {
         vector<AdjacencyList<CoordinateWithVisitedState> *> candidate;
@@ -80,4 +80,15 @@ void SimulatedAnnealingSolver::solve() {
 
 void SimulatedAnnealingSolver::newTemperature() {
     this->temperature = this->temperature * this->alpha;
+}
+
+void SimulatedAnnealingSolver::greedySolve() {
+    if (this->answer.empty()) {
+        GreedySolver greedySolver = *new GreedySolver(this->instance);
+        greedySolver.solve();
+        this->answer = greedySolver.answer;
+        this->currentAnswer = answer;
+        this->distance = greedySolver.getDistance();
+        this->currentDistance = greedySolver.getDistance();
+    }
 }

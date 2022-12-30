@@ -15,6 +15,7 @@ private:
     double distance;
     double currentDistance{};
     float alpha;
+    Instance instance;
     vector<AdjacencyList<CoordinateWithVisitedState> *> currentAnswer = {};
 
     void newTemperature();
@@ -23,8 +24,8 @@ public:
     vector<AdjacencyList<CoordinateWithVisitedState> *> answer = {};
 
     explicit SimulatedAnnealingSolver(Instance *instance, double stoppingTemperature = 1e-8,
-                                      float temperature = 10000, int stoppingIteration = 1000000,
-                                      float alpha = 0.999);
+                                      float temperature = 2, int stoppingIteration = 1750000,
+                                      float alpha = 0.99999);
 
     double calculateDistance(vector<AdjacencyList<struct CoordinateWithVisitedState> *> coordinateList) const;
 
@@ -37,6 +38,8 @@ public:
     void accept(const vector<AdjacencyList<CoordinateWithVisitedState> *> &candidate);
 
     void solve();
+
+    void greedySolve();
 };
 
 

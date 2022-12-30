@@ -17,7 +17,7 @@ Include(FetchContent)
 FetchContent_Declare(
         Catch2
         GIT_REPOSITORY https://github.com/catchorg/Catch2.git
-        GIT_TAG v3.0.1 # or a later release
+        GIT_TAG v3.0.1
 )
 
 FetchContent_MakeAvailable(Catch2)
@@ -44,3 +44,4 @@ add_test_and_executable(tests/classes/RandomInstanceGenerator/RandomInstanceGene
 add_test_and_executable(tests/classes/GreedySolver/GreedySolverTests.cpp greedy-solver-tests)
 add_test_and_executable(tests/classes/SimulatedAnnealingSolver/SimulatedAnnealingSolverTests.cpp simulated-annealing-solver-tests)
 add_test_and_executable(tests/classes/RandomNumberGenerator/RandomNumberGeneratorTests.cpp random-number-generator-tests)
+add_test_and_executable(tests/BenchmarkTests.cpp benchmark-tests)
