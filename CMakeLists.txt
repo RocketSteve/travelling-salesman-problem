@@ -44,4 +44,7 @@ add_test_and_executable(tests/classes/RandomInstanceGenerator/RandomInstanceGene
 add_test_and_executable(tests/classes/GreedySolver/GreedySolverTests.cpp greedy-solver-tests)
 add_test_and_executable(tests/classes/SimulatedAnnealingSolver/SimulatedAnnealingSolverTests.cpp simulated-annealing-solver-tests)
 add_test_and_executable(tests/classes/RandomNumberGenerator/RandomNumberGeneratorTests.cpp random-number-generator-tests)
-add_test_and_executable(tests/BenchmarkTests.cpp benchmark-tests)
+
+add_executable(benchmark-tests tests/BenchmarkTests.cpp ${classes})
+target_link_libraries(benchmark-tests PRIVATE Catch2::Catch2WithMain)
+target_include_directories(benchmark-tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})

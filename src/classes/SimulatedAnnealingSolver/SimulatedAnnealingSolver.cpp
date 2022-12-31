@@ -6,12 +6,12 @@
 using namespace std;
 
 SimulatedAnnealingSolver::SimulatedAnnealingSolver(Instance *instance, double stoppingTemperature,
-                                                   float temperature, int stoppingIteration,
-                                                   float alpha) {
+                                                   int stoppingIteration, float alpha) {
     this->stoppingTemperature = stoppingTemperature;
     this->stoppingIteration = stoppingIteration;
     this->alpha = alpha;
     this->instance = *instance;
+    this->temperature = 1 / (double) this->instance.graph->getSize();
 }
 
 double SimulatedAnnealingSolver::calculateDistance(
@@ -64,7 +64,7 @@ void SimulatedAnnealingSolver::accept(const vector<AdjacencyList<CoordinateWithV
 
 void SimulatedAnnealingSolver::solve() {
     this->greedySolve();
-    this->temperature = this->distance * (5.0 / 100);
+    this->temperature = this->distance * this->temperature;
     int iteration = 0;
     while (this->temperature >= this->stoppingTemperature && this->stoppingIteration > iteration) {
         vector<AdjacencyList<CoordinateWithVisitedState> *> candidate;

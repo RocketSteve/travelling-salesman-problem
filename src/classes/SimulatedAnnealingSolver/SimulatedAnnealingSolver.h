@@ -12,7 +12,7 @@ private:
     double temperature;
     double stoppingTemperature{};
     int stoppingIteration;
-    double distance;
+    double distance{};
     double currentDistance{};
     float alpha;
     Instance instance;
@@ -23,8 +23,8 @@ private:
 public:
     vector<AdjacencyList<CoordinateWithVisitedState> *> answer = {};
 
-    explicit SimulatedAnnealingSolver(Instance *instance, double stoppingTemperature = 1e-8,
-                                      float temperature = 2, int stoppingIteration = 1750000,
+    explicit SimulatedAnnealingSolver(Instance *instance, double stoppingTemperature = 1e-6,
+                                      int stoppingIteration = 2000000,
                                       float alpha = 0.99999);
 
     double calculateDistance(vector<AdjacencyList<struct CoordinateWithVisitedState> *> coordinateList) const;
