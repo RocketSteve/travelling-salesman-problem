@@ -2,7 +2,6 @@
 #include "../src/classes/SimulatedAnnealingSolver/SimulatedAnnealingSolver.h"
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/matchers/catch_matchers_floating_point.hpp>
-#include <chrono>
 
 #define BERLIN52 "resources/berlin52.txt"
 #define BIER127 "resources/bier127.txt"
@@ -11,20 +10,14 @@
 #define TSP250 "resources/tsp250.txt"
 
 using std::cout;
-using std::chrono::high_resolution_clock;
-using std::chrono::microseconds;
 
 void test_instance(const string &filename) {
     Instance *instance = new InstanceFileReader(filename);
     auto simulatedAnnealing = new SimulatedAnnealingSolver(instance);
     simulatedAnnealing->greedySolve();
     auto greedyDistance = simulatedAnnealing->getDistance();
-    auto start = high_resolution_clock::now();
     simulatedAnnealing->solve();
-    auto stop = high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(stop - start);
     cout << endl << "-------------------------------------------------------------------------------" << endl;
-    cout << "TEST RESULT | Time: " << duration.count() << endl;
     cout << "TEST RESULT | Greedy distance: " << greedyDistance << endl;
     cout << "TEST RESULT | Distance: " << simulatedAnnealing->getDistance() << endl;
     string path;

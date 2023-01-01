@@ -3,8 +3,6 @@
 
 #include <random>
 
-using namespace std;
-
 class RandomNumberGenerator {
 public:
     static double generate(double from, double to);

@@ -5,6 +5,8 @@
 #include <catch2/matchers/catch_matchers.hpp>
 #include <cmath>
 
+using std::vector;
+
 TEST_CASE("constructor", "[SimulatedAnnealingSolver]") {
     Instance *instance = new InstanceFileReader("resources/instance.txt");
     auto simulatedAnnealing = new SimulatedAnnealingSolver(instance);

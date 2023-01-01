@@ -1,6 +1,8 @@
 #include "GreedySolver.h"
 #include <cfloat>
 
+using std::pair;
+
 GreedySolver::GreedySolver(Instance instance) { this->instance = instance; }
 
 void GreedySolver::solve() {

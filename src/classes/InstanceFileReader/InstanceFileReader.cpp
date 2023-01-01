@@ -2,7 +2,13 @@
 #include <iostream>
 #include <string>
 #include <unistd.h>
+#include <utility>
 #include <vector>
+
+using std::cout;
+using std::ifstream;
+using std::pair;
+using std::vector;
 
 pair<string, string> split(const string &s, const string &delimiter) {
     size_t pos_start = 0, pos_end, delim_len = delimiter.length();
@@ -30,8 +36,9 @@ InstanceFileReader::InstanceFileReader(const string &filename) : Instance() {
             if (first) {
                 size = stoi(line);
                 first = false;
-            } else if (!line.empty())
+            } else if (!line.empty()) {
                 addVertexByLine(line);
+            }
             if (file.eof()) break;
         }
     }

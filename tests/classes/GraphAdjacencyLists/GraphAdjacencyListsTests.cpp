@@ -81,5 +81,5 @@ TEST_CASE("getSize", "[GraphAdjacencyLists]") {
 TEST_CASE("getIdByValue", "[GraphAdjacencyLists]") {
     auto graph = new GraphAdjacencyLists<int>();
     graph->addVertex(2);
-    REQUIRE(graph->getIdByValue((int) 2) == 0);
+    REQUIRE(graph->getIdByValue(2) == 0);
 }

@@ -8,7 +8,7 @@
 #include <memory>
 #include <set>
 
-using namespace std;
+using std::set;
 
 template<typename ValueType>
 class AdjacencyList {

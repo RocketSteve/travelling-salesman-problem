@@ -7,6 +7,8 @@
 #include "../Instance/Instance.h"
 #include <vector>
 
+using std::vector;
+
 class SimulatedAnnealingSolver {
 private:
     double temperature;

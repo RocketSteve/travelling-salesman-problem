@@ -3,13 +3,15 @@
 #include <algorithm>
 #include <cmath>
 
+using std::vector;
+
 SimulatedAnnealingSolver::SimulatedAnnealingSolver(Instance *instance, double stoppingTemperature,
                                                    int stoppingIteration, float alpha) {
     this->stoppingTemperature = stoppingTemperature;
     this->stoppingIteration = stoppingIteration;
     this->alpha = alpha;
     this->instance = *instance;
-    this->temperature = 1 / (double) this->instance.graph->getSize();
+    this->temperature = 1 / static_cast<double>(this->instance.graph->getSize());
 }
 
 double SimulatedAnnealingSolver::calculateDistance(
@@ -58,8 +60,10 @@ void SimulatedAnnealingSolver::solve() {
     while (this->temperature >= this->stoppingTemperature && this->stoppingIteration > iteration) {
         vector<AdjacencyList<CoordinateWithVisitedState> *> candidate;
         candidate.assign(this->currentAnswer.begin(), this->currentAnswer.end());
-        auto l = (int) RandomNumberGenerator::generate(2, (double) this->currentAnswer.size() - 1);
-        auto i = (int) RandomNumberGenerator::generate(1, (double) this->currentAnswer.size() - l);
+        auto l = static_cast<int>(
+                RandomNumberGenerator::generate(2, static_cast<double>(this->currentAnswer.size() - 1)));
+        auto i = static_cast<int>(
+                RandomNumberGenerator::generate(1, static_cast<double>(this->currentAnswer.size() - l)));
         reverse(candidate.begin() + i, candidate.begin() + i + l);
         this->accept(candidate);
         this->newTemperature();

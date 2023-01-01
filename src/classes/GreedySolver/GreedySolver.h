@@ -8,6 +8,9 @@
 #include <utility>
 #include <vector>
 
+using std::pair;
+using std::vector;
+
 class GreedySolver {
 private:
     Instance instance;

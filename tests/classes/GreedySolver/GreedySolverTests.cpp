@@ -5,6 +5,7 @@
 #include <catch2/matchers/catch_matchers_floating_point.hpp>
 
 using Catch::Matchers::WithinRel;
+using std::vector;
 
 TEST_CASE("findFirstVertex", "[GreedySolver]") {
     Instance instance = InstanceFileReader("resources/instance.txt");
