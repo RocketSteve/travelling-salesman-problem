@@ -8,6 +8,7 @@
 using std::cout;
 using std::ifstream;
 using std::pair;
+using std::pair;
 using std::vector;
 
 pair<string, string> split(const string &s, const string &delimiter) {

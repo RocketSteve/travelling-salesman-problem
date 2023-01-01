@@ -1,6 +1,10 @@
 #include "GraphAdjacencyLists.h"
 #include <algorithm>
 
+using std::cout;
+using std::endl;
+using std::to_string;
+
 template<typename ValueType>
 void GraphAdjacencyLists<ValueType>::addVertex(ValueType value) {
     this->vertices.push_back(new AdjacencyList<ValueType>(idIterator, value));

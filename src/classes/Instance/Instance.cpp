@@ -2,6 +2,10 @@
 #include <fstream>
 #include <string>
 
+using std::endl;
+using std::ofstream;
+using std::to_string;
+
 void Instance::addVertex(CoordinateWithVisitedState point) const {
     this->graph->addVertex(CoordinateWithVisitedState(point.getLatitude(), point.getLongitude()));
 }

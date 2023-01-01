@@ -10,6 +10,8 @@
 #define TSP250 "resources/tsp250.txt"
 
 using std::cout;
+using std::endl;
+using std::to_string;
 
 void test_instance(const string &filename) {
     Instance *instance = new InstanceFileReader(filename);
