@@ -1,17 +1,10 @@
 #include "CoordinateWithVisitedState.h"
 
 CoordinateWithVisitedState::CoordinateWithVisitedState(double latitude, double longitude)
-        : Coordinate(latitude, longitude) {
-}
+    : Coordinate(latitude, longitude) {}
 
-CoordinateWithVisitedState::CoordinateWithVisitedState()
-        : Coordinate(0, 0) {
-}
+CoordinateWithVisitedState::CoordinateWithVisitedState() : Coordinate(0, 0) {}
 
-void CoordinateWithVisitedState::visitCoordinate() {
-    this->visited = true;
-}
+void CoordinateWithVisitedState::visitCoordinate() { this->visited = true; }
 
-bool CoordinateWithVisitedState::getVisited() const {
-    return this->visited;
-}
+bool CoordinateWithVisitedState::getVisited() const { return this->visited; }

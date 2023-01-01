@@ -1,20 +1,21 @@
 #ifndef TRAVELLING_SALESMAN_PROBLEM_ADJACENCYLIST_H
 #define TRAVELLING_SALESMAN_PROBLEM_ADJACENCYLIST_H
 
-#include <memory>
-#include <iostream>
-#include <iterator>
-#include <set>
 #include "../../Coordinate/Coordinate.h"
 #include "../../CoordinateWithVisitedState/CoordinateWithVisitedState.h"
+#include <iostream>
+#include <iterator>
+#include <memory>
+#include <set>
 
-using namespace std;
+using std::set;
 
 template<typename ValueType>
 class AdjacencyList {
 private:
     int id{};
     ValueType value;
+
 public:
     set<AdjacencyList<ValueType> *> adjacencyList;
 
@@ -36,4 +37,4 @@ public:
 };
 
 
-#endif //TRAVELLING_SALESMAN_PROBLEM_ADJACENCYLIST_H
+#endif//TRAVELLING_SALESMAN_PROBLEM_ADJACENCYLIST_H

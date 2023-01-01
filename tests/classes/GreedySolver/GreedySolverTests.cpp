@@ -1,10 +1,11 @@
+#include "../../../src/classes/GreedySolver/GreedySolver.h"
+#include "src/classes/InstanceFileReader/InstanceFileReader.h"
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/matchers/catch_matchers.hpp>
 #include <catch2/matchers/catch_matchers_floating_point.hpp>
-#include "../../../src/classes/GreedySolver/GreedySolver.h"
-#include "src/classes/InstanceFileReader/InstanceFileReader.h"
 
-using namespace Catch::Matchers;
+using Catch::Matchers::WithinRel;
+using std::vector;
 
 TEST_CASE("findFirstVertex", "[GreedySolver]") {
     Instance instance = InstanceFileReader("resources/instance.txt");
@@ -44,13 +45,10 @@ TEST_CASE("solve", "[GreedySolver]") {
     Instance instance = InstanceFileReader("resources/instance.txt");
     auto greedySolver = new GreedySolver(instance);
     greedySolver->solve();
-    vector<int> validAnswer = {0, 27, 5, 11, 8, 4, 20, 1, 19, 9, 3, 14, 17, 13, 21, 16, 10, 18, 24, 6, 22, 26, 7, 23,
-                               15, 12,
-                               28, 25, 2, 0};
+    vector<int> validAnswer = {0,  27, 5,  11, 8, 4,  20, 1, 19, 9,  3,  14, 17, 13, 21,
+                               16, 10, 18, 24, 6, 22, 26, 7, 23, 15, 12, 28, 25, 2,  0};
     vector<int> answerFromGreedy = {};
-    for (auto i: greedySolver->answer) {
-        answerFromGreedy.push_back(i->getId());
-    }
+    for (auto i: greedySolver->answer) { answerFromGreedy.push_back(i->getId()); }
     REQUIRE(answerFromGreedy == validAnswer);
     REQUIRE_THAT(greedySolver->getDistance(), WithinRel(10211.18, 0.1));
 }

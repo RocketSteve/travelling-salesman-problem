@@ -3,12 +3,10 @@
 
 #include <random>
 
-using namespace std;
-
 class RandomNumberGenerator {
 public:
     static double generate(double from, double to);
 };
 
 
-#endif //TRAVELLING_SALESMAN_PROBLEM_RANDOMNUMBERGENERATOR_H
+#endif//TRAVELLING_SALESMAN_PROBLEM_RANDOMNUMBERGENERATOR_H

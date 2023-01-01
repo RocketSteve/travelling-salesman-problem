@@ -1,15 +1,21 @@
 #ifndef TRAVELLING_SALESMAN_PROBLEM_GREEDYSOLVER_H
 #define TRAVELLING_SALESMAN_PROBLEM_GREEDYSOLVER_H
 
-#include "../Instance/Instance.h"
-#include "../GraphAdjacencyLists/GraphAdjacencyLists.h"
-#include "../GraphAdjacencyLists/AdjacencyList/AdjacencyList.h"
 #include "../CoordinateWithVisitedState/CoordinateWithVisitedState.h"
+#include "../GraphAdjacencyLists/AdjacencyList/AdjacencyList.h"
+#include "../GraphAdjacencyLists/GraphAdjacencyLists.h"
+#include "../Instance/Instance.h"
+#include <utility>
+#include <vector>
+
+using std::pair;
+using std::vector;
 
 class GreedySolver {
 private:
     Instance instance;
     double distance = 0;
+
 public:
     vector<AdjacencyList<CoordinateWithVisitedState> *> answer = {};
 
@@ -17,8 +23,8 @@ public:
 
     AdjacencyList<CoordinateWithVisitedState> *findFirstVertex() const;
 
-    static pair<AdjacencyList<struct CoordinateWithVisitedState> *, double> nextVertex(
-            AdjacencyList<CoordinateWithVisitedState> *currentVertex);
+    static pair<AdjacencyList<struct CoordinateWithVisitedState> *, double>
+    nextVertex(AdjacencyList<CoordinateWithVisitedState> *currentVertex);
 
     void solve();
 
@@ -28,4 +34,4 @@ public:
 };
 
 
-#endif //TRAVELLING_SALESMAN_PROBLEM_GREEDYSOLVER_H
+#endif//TRAVELLING_SALESMAN_PROBLEM_GREEDYSOLVER_H

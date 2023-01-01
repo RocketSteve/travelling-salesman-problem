@@ -1,7 +1,5 @@
 #include "AdjacencyList.h"
 
-using namespace std;
-
 template<typename ValueType>
 AdjacencyList<ValueType>::AdjacencyList(int id, ValueType value) {
     this->value = value;
@@ -32,9 +30,7 @@ template<typename ValueType>
 AdjacencyList<ValueType> *AdjacencyList<ValueType>::getAdjacency(int index) {
     int currentIndex = 0;
     for (auto &adjacency: this->adjacencyList) {
-        if (currentIndex == index) {
-            return adjacency;
-        }
+        if (currentIndex == index) { return adjacency; }
         currentIndex++;
     }
     return nullptr;
@@ -42,9 +38,7 @@ AdjacencyList<ValueType> *AdjacencyList<ValueType>::getAdjacency(int index) {
 
 template<typename ValueType>
 bool AdjacencyList<ValueType>::operator==(const AdjacencyList<ValueType> &other) {
-    return this->id == other.id &&
-           this->value == other.value &&
-           this->adjacencyList == other.adjacencyList;
+    return this->id == other.id && this->value == other.value && this->adjacencyList == other.adjacencyList;
 }
 
 template<typename ValueType>
@@ -52,8 +46,6 @@ int AdjacencyList<ValueType>::getSize() {
     return this->adjacencyList.size();
 }
 
-template
-class AdjacencyList<int>;
+template class AdjacencyList<int>;
 
-template
-class AdjacencyList<CoordinateWithVisitedState>;
+template class AdjacencyList<CoordinateWithVisitedState>;

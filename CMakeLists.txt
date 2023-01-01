@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.23)
-project(travelling-salesman-problem )
+project(travelling-salesman-problem)
 
 set(CMAKE_CXX_STANDARD 14)
 
@@ -17,7 +17,7 @@ Include(FetchContent)
 FetchContent_Declare(
         Catch2
         GIT_REPOSITORY https://github.com/catchorg/Catch2.git
-        GIT_TAG v3.0.1 # or a later release
+        GIT_TAG v3.0.1
 )
 
 FetchContent_MakeAvailable(Catch2)
@@ -44,3 +44,7 @@ add_test_and_executable(tests/classes/RandomInstanceGenerator/RandomInstanceGene
 add_test_and_executable(tests/classes/GreedySolver/GreedySolverTests.cpp greedy-solver-tests)
 add_test_and_executable(tests/classes/SimulatedAnnealingSolver/SimulatedAnnealingSolverTests.cpp simulated-annealing-solver-tests)
 add_test_and_executable(tests/classes/RandomNumberGenerator/RandomNumberGeneratorTests.cpp random-number-generator-tests)
+
+add_executable(benchmark-tests tests/BenchmarkTests.cpp ${classes})
+target_link_libraries(benchmark-tests PRIVATE Catch2::Catch2WithMain)
+target_include_directories(benchmark-tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})

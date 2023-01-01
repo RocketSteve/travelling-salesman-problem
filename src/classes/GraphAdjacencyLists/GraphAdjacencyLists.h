@@ -1,17 +1,18 @@
 #ifndef TRAVELLING_SALESMAN_PROBLEM_GRAPHADJACENCYLISTS_H
 #define TRAVELLING_SALESMAN_PROBLEM_GRAPHADJACENCYLISTS_H
 
+#include "AdjacencyList/AdjacencyList.h"
 #include <list>
 #include <map>
 #include <vector>
-#include "AdjacencyList/AdjacencyList.h"
 
-using namespace std;
+using std::vector;
 
 template<class ValueType>
 class GraphAdjacencyLists {
 private:
     int idIterator = 0;
+
 public:
     vector<AdjacencyList<ValueType> *> vertices;
 
@@ -36,4 +37,4 @@ public:
     AdjacencyList<ValueType> *getVertexByIndex(int index);
 };
 
-#endif //TRAVELLING_SALESMAN_PROBLEM_GRAPHADJACENCYLISTS_H
+#endif//TRAVELLING_SALESMAN_PROBLEM_GRAPHADJACENCYLISTS_H

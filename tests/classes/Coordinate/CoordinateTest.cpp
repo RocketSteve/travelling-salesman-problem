@@ -1,8 +1,8 @@
-#include <catch2/catch_test_macros.hpp>
 #include "../../../src/classes/Coordinate/Coordinate.h"
+#include <catch2/catch_test_macros.hpp>
 #include <catch2/matchers/catch_matchers_floating_point.hpp>
 
-using namespace Catch::Matchers;
+using Catch::Matchers::WithinRel;
 
 TEST_CASE("constructor", "[Coordinate]") {
     const auto longitude = 10.20;
@@ -32,17 +32,15 @@ TEST_CASE("getDistance", "[Coordinate]") {
     auto coordinate3 = Coordinate(25, 15);
     const double result = 18.7216452268;
     const double result2 = 16.1400123916;
-    SECTION("Positive A and B") {
-        REQUIRE_THAT(coordinate.getDistance(coordinate2), WithinRel(result, 0.000001));
-    }SECTION("Negative A and B") {
-        REQUIRE_THAT(coordinate2.getDistance(coordinate), WithinRel(result, 0.000001));
-    }SECTION("Negative A and positive B") {
+    SECTION("Positive A and B") { REQUIRE_THAT(coordinate.getDistance(coordinate2), WithinRel(result, 0.000001)); }
+    SECTION("Negative A and B") { REQUIRE_THAT(coordinate2.getDistance(coordinate), WithinRel(result, 0.000001)); }
+    SECTION("Negative A and positive B") {
         REQUIRE_THAT(coordinate.getDistance(coordinate3), WithinRel(result2, 0.000001));
-    }SECTION("Positive A and negative B") {
-        REQUIRE_THAT(coordinate3.getDistance(coordinate), WithinRel(result2, 0.000001));
-    }SECTION("Distance between the same points") {
-        REQUIRE(coordinate.getDistance(coordinate) == 0);
     }
+    SECTION("Positive A and negative B") {
+        REQUIRE_THAT(coordinate3.getDistance(coordinate), WithinRel(result2, 0.000001));
+    }
+    SECTION("Distance between the same points") { REQUIRE(coordinate.getDistance(coordinate) == 0); }
 }
 
 TEST_CASE("operator==", "[Coordinate]") {
