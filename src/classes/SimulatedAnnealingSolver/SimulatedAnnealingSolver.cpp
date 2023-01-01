@@ -28,13 +28,9 @@ double SimulatedAnnealingSolver::calculateDistance(
     return tmpDistance;
 }
 
-double SimulatedAnnealingSolver::getDistance() const {
-    return this->distance;
-}
+double SimulatedAnnealingSolver::getDistance() const { return this->distance; }
 
-void SimulatedAnnealingSolver::calculateDistance() {
-    this->distance = this->calculateDistance(this->answer);
-}
+void SimulatedAnnealingSolver::calculateDistance() { this->distance = this->calculateDistance(this->answer); }
 
 double SimulatedAnnealingSolver::probabilityAccept(double probabilityDistance) const {
     return exp(-(probabilityDistance - this->currentDistance) / this->temperature);
@@ -73,9 +69,7 @@ void SimulatedAnnealingSolver::solve() {
     }
 }
 
-void SimulatedAnnealingSolver::newTemperature() {
-    this->temperature = this->temperature * this->alpha;
-}
+void SimulatedAnnealingSolver::newTemperature() { this->temperature = this->temperature * this->alpha; }
 
 void SimulatedAnnealingSolver::greedySolve() {
     if (this->answer.empty()) {

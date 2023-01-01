@@ -17,12 +17,8 @@ bool checkConnectionWithThree(AdjacencyList<CoordinateWithVisitedState> vertex0,
                               AdjacencyList<CoordinateWithVisitedState> vertex2) {
     auto firstId = vertex0.getAdjacency(0);
     bool valid = false;
-    if (firstId->getId() == vertex1.getId()) {
-        valid = true;
-    }
-    if (firstId->getId() == vertex2.getId()) {
-        valid = true;
-    }
+    if (firstId->getId() == vertex1.getId()) { valid = true; }
+    if (firstId->getId() == vertex2.getId()) { valid = true; }
     return valid;
 }
 

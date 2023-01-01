@@ -1,9 +1,7 @@
 #include "GreedySolver.h"
 #include <cfloat>
 
-GreedySolver::GreedySolver(Instance instance) {
-    this->instance = instance;
-}
+GreedySolver::GreedySolver(Instance instance) { this->instance = instance; }
 
 void GreedySolver::solve() {
     auto firstVertex = this->findFirstVertex();
@@ -21,14 +19,12 @@ void GreedySolver::solve() {
 }
 
 AdjacencyList<CoordinateWithVisitedState> *GreedySolver::findFirstVertex() const {
-    if (this->instance.graph->getSize() < 1) {
-        return nullptr;
-    }
+    if (this->instance.graph->getSize() < 1) { return nullptr; }
     return this->instance.graph->vertices[0];
 }
 
-pair<AdjacencyList<CoordinateWithVisitedState> *, double> GreedySolver::nextVertex(
-        AdjacencyList<CoordinateWithVisitedState> *currentVertex) {
+pair<AdjacencyList<CoordinateWithVisitedState> *, double>
+GreedySolver::nextVertex(AdjacencyList<CoordinateWithVisitedState> *currentVertex) {
     auto currentTheBestDistance = DBL_MAX;
     AdjacencyList<CoordinateWithVisitedState> *currentTheBest = nullptr;
     for (auto potentiallyNextVertex: currentVertex->adjacencyList) {
@@ -48,6 +44,4 @@ void GreedySolver::addVertexToAnswer(AdjacencyList<CoordinateWithVisitedState> *
     this->answer.push_back(vertex);
 }
 
-double GreedySolver::getDistance() const {
-    return this->distance;
-}
+double GreedySolver::getDistance() const { return this->distance; }

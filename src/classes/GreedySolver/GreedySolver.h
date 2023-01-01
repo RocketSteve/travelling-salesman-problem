@@ -18,8 +18,8 @@ public:
 
     AdjacencyList<CoordinateWithVisitedState> *findFirstVertex() const;
 
-    static pair<AdjacencyList<struct CoordinateWithVisitedState> *, double> nextVertex(
-            AdjacencyList<CoordinateWithVisitedState> *currentVertex);
+    static pair<AdjacencyList<struct CoordinateWithVisitedState> *, double>
+    nextVertex(AdjacencyList<CoordinateWithVisitedState> *currentVertex);
 
     void solve();
 

@@ -32,18 +32,13 @@ InstanceFileReader::InstanceFileReader(const string &filename) : Instance() {
                 first = false;
             } else if (!line.empty())
                 addVertexByLine(line);
-            if (file.eof())
-                break;
+            if (file.eof()) break;
         }
     }
     this->connectAllPoints();
     try {
-        if (this->graph->getSize() != size) {
-            throw size;
-        }
-    } catch (int size) {
-        cout << "BadInstanceFileOrReadFileError: size of instance is different" << endl;
-    }
+        if (this->graph->getSize() != size) { throw size; }
+    } catch (int size) { cout << "BadInstanceFileOrReadFileError: size of instance is different" << endl; }
 }
 
 void InstanceFileReader::addVertexByLine(const string &line) const {

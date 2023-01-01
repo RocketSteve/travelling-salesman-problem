@@ -2,9 +2,7 @@
 #include <catch2/catch_test_macros.hpp>
 
 
-TEST_CASE("constructor", "[GraphAdjacencyLists]") {
-    GraphAdjacencyLists<int>();
-}
+TEST_CASE("constructor", "[GraphAdjacencyLists]") { GraphAdjacencyLists<int>(); }
 
 TEST_CASE("addVertex", "[GraphAdjacencyLists]") {
     auto graph = new GraphAdjacencyLists<int>();

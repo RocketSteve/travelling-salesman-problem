@@ -1,13 +1,9 @@
 #include "Coordinate.h"
-#include  <ctgmath>
+#include <ctgmath>
 
-double Coordinate::getLatitude() const {
-    return this->mLatitude;
-}
+double Coordinate::getLatitude() const { return this->mLatitude; }
 
-double Coordinate::getLongitude() const {
-    return this->mLongitude;
-}
+double Coordinate::getLongitude() const { return this->mLongitude; }
 
 Coordinate::Coordinate(double latitude, double longitude) {
     this->mLatitude = latitude;
@@ -22,12 +18,9 @@ double Coordinate::getDistance(Coordinate point) const {
 }
 
 std::string Coordinate::to_string() const {
-    return "Latitude: " + std::to_string(this->mLatitude)
-           + " Longitude: " + std::to_string(this->mLongitude);
+    return "Latitude: " + std::to_string(this->mLatitude) + " Longitude: " + std::to_string(this->mLongitude);
 }
 
 bool Coordinate::operator==(const Coordinate &other) const {
-    return this->mLongitude == other.mLongitude
-           && this->mLatitude == other.mLatitude;
+    return this->mLongitude == other.mLongitude && this->mLatitude == other.mLatitude;
 }
-

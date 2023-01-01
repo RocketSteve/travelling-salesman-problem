@@ -23,8 +23,7 @@ void test_instance(const string &filename) {
     simulatedAnnealing->solve();
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start);
-    cout << endl
-         << "-------------------------------------------------------------------------------" << endl;
+    cout << endl << "-------------------------------------------------------------------------------" << endl;
     cout << "TEST RESULT | Time: " << duration.count() << endl;
     cout << "TEST RESULT | Greedy distance: " << greedyDistance << endl;
     cout << "TEST RESULT | Distance: " << simulatedAnnealing->getDistance() << endl;
@@ -38,42 +37,32 @@ void test_instance(const string &filename) {
 }
 
 TEST_CASE("berlin52", "[BenchmarkTests]") {
-    cout << endl
-         << "-------------------------------------------------------------------------------" << endl;
-    cout << endl
-         << "BERLIN52" << endl;
+    cout << endl << "-------------------------------------------------------------------------------" << endl;
+    cout << endl << "BERLIN52" << endl;
     test_instance(BERLIN52);
 }
 
 TEST_CASE("bier127", "[BenchmarkTests]") {
-    cout << endl
-         << "-------------------------------------------------------------------------------" << endl;
-    cout << endl
-         << "BIER127" << endl;
+    cout << endl << "-------------------------------------------------------------------------------" << endl;
+    cout << endl << "BIER127" << endl;
     test_instance(BIER127);
 }
 
 TEST_CASE("tsp1000", "[BenchmarkTests]") {
-    cout << endl
-         << "-------------------------------------------------------------------------------" << endl;
-    cout << endl
-         << "TSP1000" << endl;
+    cout << endl << "-------------------------------------------------------------------------------" << endl;
+    cout << endl << "TSP1000" << endl;
     test_instance(TSP1000);
 }
 
 TEST_CASE("tsp500", "[BenchmarkTests]") {
-    cout << endl
-         << "-------------------------------------------------------------------------------" << endl;
-    cout << endl
-         << "TSP500" << endl;
+    cout << endl << "-------------------------------------------------------------------------------" << endl;
+    cout << endl << "TSP500" << endl;
     test_instance(TSP500);
 }
 
 
 TEST_CASE("tsp250", "[BenchmarkTests]") {
-    cout << endl
-         << "-------------------------------------------------------------------------------" << endl;
-    cout << endl
-         << "TSP250" << endl;
+    cout << endl << "-------------------------------------------------------------------------------" << endl;
+    cout << endl << "TSP250" << endl;
     test_instance(TSP250);
 }
