@@ -10,9 +10,9 @@
 #define TSP500 "resources/tsp500.txt"
 #define TSP250 "resources/tsp250.txt"
 
-using namespace std::chrono;
-using namespace Catch::Matchers;
-using namespace std;
+using std::cout;
+using std::chrono::high_resolution_clock;
+using std::chrono::microseconds;
 
 void test_instance(const string &filename) {
     Instance *instance = new InstanceFileReader(filename);

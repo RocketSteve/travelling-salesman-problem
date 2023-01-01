@@ -5,9 +5,6 @@
 #include <catch2/matchers/catch_matchers.hpp>
 #include <cmath>
 
-using namespace Catch::Matchers;
-using namespace std;
-
 TEST_CASE("constructor", "[SimulatedAnnealingSolver]") {
     Instance *instance = new InstanceFileReader("resources/instance.txt");
     auto simulatedAnnealing = new SimulatedAnnealingSolver(instance);

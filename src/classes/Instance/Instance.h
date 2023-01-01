@@ -3,6 +3,7 @@
 
 #include "../CoordinateWithVisitedState/CoordinateWithVisitedState.h"
 #include "../GraphAdjacencyLists/GraphAdjacencyLists.h"
+#include <string>
 
 class Instance {
 public:

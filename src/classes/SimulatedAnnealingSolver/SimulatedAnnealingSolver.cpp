@@ -3,8 +3,6 @@
 #include <algorithm>
 #include <cmath>
 
-using namespace std;
-
 SimulatedAnnealingSolver::SimulatedAnnealingSolver(Instance *instance, double stoppingTemperature,
                                                    int stoppingIteration, float alpha) {
     this->stoppingTemperature = stoppingTemperature;

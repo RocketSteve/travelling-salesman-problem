@@ -1,7 +1,5 @@
 #include "RandomNumberGenerator.h"
 
-using namespace std;
-
 double RandomNumberGenerator::generate(double from, double to) {
     random_device rd;
     mt19937 gen(rd());

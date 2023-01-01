@@ -5,6 +5,8 @@
 #include "../GraphAdjacencyLists/AdjacencyList/AdjacencyList.h"
 #include "../GraphAdjacencyLists/GraphAdjacencyLists.h"
 #include "../Instance/Instance.h"
+#include <utility>
+#include <vector>
 
 class GreedySolver {
 private:

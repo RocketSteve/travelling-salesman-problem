@@ -4,7 +4,7 @@
 #include <catch2/matchers/catch_matchers.hpp>
 #include <catch2/matchers/catch_matchers_floating_point.hpp>
 
-using namespace Catch::Matchers;
+using Catch::Matchers::WithinRel;
 
 TEST_CASE("findFirstVertex", "[GreedySolver]") {
     Instance instance = InstanceFileReader("resources/instance.txt");

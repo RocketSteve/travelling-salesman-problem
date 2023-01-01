@@ -2,8 +2,6 @@
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/matchers/catch_matchers.hpp>
 
-using namespace Catch::Matchers;
-
 TEST_CASE("constructor", "[AdjacencyList]") {
     int number = 5;
     int id = 0;

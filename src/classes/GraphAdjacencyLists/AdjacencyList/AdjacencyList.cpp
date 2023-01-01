@@ -1,7 +1,5 @@
 #include "AdjacencyList.h"
 
-using namespace std;
-
 template<typename ValueType>
 AdjacencyList<ValueType>::AdjacencyList(int id, ValueType value) {
     this->value = value;
