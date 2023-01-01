@@ -8,6 +8,7 @@ class Coordinate {
 private:
     double mLatitude;
     double mLongitude;
+
 public:
     Coordinate(double latitude, double longitude);
     double getLatitude() const;
@@ -18,4 +19,4 @@ public:
 };
 
 
-#endif //TRAVELLING_SALESMAN_PROBLEM_COORDINATE_H
+#endif//TRAVELLING_SALESMAN_PROBLEM_COORDINATE_H

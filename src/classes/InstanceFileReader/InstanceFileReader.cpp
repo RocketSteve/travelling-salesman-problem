@@ -1,8 +1,8 @@
-#include <vector>
 #include "InstanceFileReader.h"
 #include <iostream>
 #include <string>
 #include <unistd.h>
+#include <vector>
 
 pair<string, string> split(const string &s, const string &delimiter) {
     size_t pos_start = 0, pos_end, delim_len = delimiter.length();
@@ -46,10 +46,9 @@ InstanceFileReader::InstanceFileReader(const string &filename) : Instance() {
     }
 }
 
-void InstanceFileReader::addVertexByLine(string line) const {
+void InstanceFileReader::addVertexByLine(const string &line) const {
     auto divideLine = split(line, " ");
     double latitude = stod(divideLine.first);
     double longitude = stod(divideLine.second);
     this->addVertex(CoordinateWithVisitedState(latitude, longitude));
 }
-

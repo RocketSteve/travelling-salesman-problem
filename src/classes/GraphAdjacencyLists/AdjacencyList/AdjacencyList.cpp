@@ -52,8 +52,6 @@ int AdjacencyList<ValueType>::getSize() {
     return this->adjacencyList.size();
 }
 
-template
-class AdjacencyList<int>;
+template class AdjacencyList<int>;
 
-template
-class AdjacencyList<CoordinateWithVisitedState>;
+template class AdjacencyList<CoordinateWithVisitedState>;

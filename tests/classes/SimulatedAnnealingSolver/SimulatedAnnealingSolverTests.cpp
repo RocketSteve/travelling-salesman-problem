@@ -1,10 +1,9 @@
+#include "../../../src/classes/SimulatedAnnealingSolver/SimulatedAnnealingSolver.h"
+#include "src/classes/InstanceFileReader/InstanceFileReader.h"
+#include <algorithm>
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/matchers/catch_matchers.hpp>
 #include <cmath>
-#include <algorithm>
-#include "../../../src/classes/SimulatedAnnealingSolver/SimulatedAnnealingSolver.h"
-#include "src/classes/InstanceFileReader/InstanceFileReader.h"
-#include "src/classes/RandomNumberGenerator/RandomNumberGenerator.h"
 
 using namespace Catch::Matchers;
 using namespace std;
@@ -35,8 +34,7 @@ TEST_CASE("solve", "[SimulatedAnnealingSolver]") {
     Instance *instance = new InstanceFileReader("resources/instance.txt");
     auto simulatedAnnealing = new SimulatedAnnealingSolver(instance);
     simulatedAnnealing->solve();
-    auto result = find_if(simulatedAnnealing->answer.begin(), simulatedAnnealing->answer.end(), [&](
-            AdjacencyList<CoordinateWithVisitedState> *i) {
+    auto result = find_if(simulatedAnnealing->answer.begin(), simulatedAnnealing->answer.end(), [&](AdjacencyList<CoordinateWithVisitedState> *i) {
         return count(simulatedAnnealing->answer.begin(), simulatedAnnealing->answer.end(), i) > 1;
     });
     REQUIRE(*result == *(simulatedAnnealing->answer.end() - 1));

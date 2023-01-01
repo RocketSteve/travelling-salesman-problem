@@ -1,5 +1,5 @@
-#include <algorithm>
 #include "GraphAdjacencyLists.h"
+#include <algorithm>
 
 using namespace std;
 
@@ -38,8 +38,7 @@ void GraphAdjacencyLists<ValueType>::removeVertex(int id) {
         const AdjacencyList<ValueType> *elementToRemove = this->getVertex(id);
         auto it = find(this->vertices.begin(), this->vertices.end(), elementToRemove);
         this->vertices.erase(it);
-    }
-    catch (int id) {
+    } catch (int id) {
         cout << "OperationNotAllowedException: vertex id " + to_string(id) + " don't exist" << endl;
     }
 }
@@ -50,8 +49,7 @@ void GraphAdjacencyLists<ValueType>::addAdjacencyToVertex(int vertexId, int adja
         AdjacencyList<ValueType> *vertex = getVertex(vertexId);
         AdjacencyList<ValueType> *vertexToAdd = getVertex(adjacencyId);
         vertex->pushAdjacency(vertexToAdd);
-    }
-    catch (int id) {
+    } catch (int id) {
         cout << "OperationNotAllowedException: vertex id " + to_string(id) + " don't exist" << endl;
     }
 }
@@ -64,8 +62,7 @@ void GraphAdjacencyLists<ValueType>::removeAdjacencyFromVertex(int vertexId, int
         if (this->checkIfVertexIdExist(adjacencyId)) {
             vertex->removeAdjacency(toRemove);
         }
-    }
-    catch (int id) {
+    } catch (int id) {
         cout << "OperationNotAllowedException: vertex id " + to_string(id) + " don't exist" << endl;
     }
 }
@@ -96,8 +93,6 @@ bool GraphAdjacencyLists<ValueType>::checkIfVertexIdExist(int id) {
     return isExist;
 }
 
-template
-class GraphAdjacencyLists<CoordinateWithVisitedState>;
+template class GraphAdjacencyLists<CoordinateWithVisitedState>;
 
-template
-class GraphAdjacencyLists<int>;
+template class GraphAdjacencyLists<int>;

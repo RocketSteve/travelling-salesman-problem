@@ -1,5 +1,5 @@
-#include <fstream>
 #include "Instance.h"
+#include <fstream>
 
 void Instance::addVertex(CoordinateWithVisitedState point) const {
     this->graph->addVertex(CoordinateWithVisitedState(point.getLatitude(), point.getLongitude()));

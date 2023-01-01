@@ -1,7 +1,7 @@
 #include "SimulatedAnnealingSolver.h"
-#include <cmath>
-#include <algorithm>
 #include "../RandomNumberGenerator/RandomNumberGenerator.h"
+#include <algorithm>
+#include <cmath>
 
 using namespace std;
 
@@ -42,9 +42,7 @@ double SimulatedAnnealingSolver::probabilityAccept(double probabilityDistance) c
 
 void SimulatedAnnealingSolver::accept(const vector<AdjacencyList<CoordinateWithVisitedState> *> &candidate) {
     auto candidateDistance = this->calculateDistance(candidate);
-//    cout << to_string(candidateDistance);
     if (candidateDistance < this->currentDistance) {
-//        cout << " ACCEPTED";
         this->currentDistance = candidateDistance;
         this->currentAnswer = candidate;
         if (candidateDistance < distance) {
@@ -52,14 +50,11 @@ void SimulatedAnnealingSolver::accept(const vector<AdjacencyList<CoordinateWithV
             this->answer = candidate;
         }
     } else {
-//        cout << " CHECK TEMPERATURE: " << to_string(temperature);
         if (RandomNumberGenerator::generate(0.0, 1.0) < this->probabilityAccept(candidateDistance)) {
             this->currentDistance = candidateDistance;
             this->currentAnswer = candidate;
-//            cout << " ACCEPTED";
         }
     }
-//    cout << endl;
 }
 
 void SimulatedAnnealingSolver::solve() {

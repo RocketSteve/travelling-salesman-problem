@@ -1,8 +1,8 @@
 #ifndef TRAVELLING_SALESMAN_PROBLEM_INSTANCE_H
 #define TRAVELLING_SALESMAN_PROBLEM_INSTANCE_H
 
-#include "../GraphAdjacencyLists/GraphAdjacencyLists.h"
 #include "../CoordinateWithVisitedState/CoordinateWithVisitedState.h"
+#include "../GraphAdjacencyLists/GraphAdjacencyLists.h"
 
 class Instance {
 public:
@@ -16,4 +16,4 @@ public:
 };
 
 
-#endif //TRAVELLING_SALESMAN_PROBLEM_INSTANCE_H
+#endif//TRAVELLING_SALESMAN_PROBLEM_INSTANCE_H

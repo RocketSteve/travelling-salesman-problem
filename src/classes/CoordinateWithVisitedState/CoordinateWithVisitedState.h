@@ -6,6 +6,7 @@
 class CoordinateWithVisitedState : public Coordinate {
 private:
     bool visited = false;
+
 public:
     explicit CoordinateWithVisitedState(double latitude, double longitude);
 
@@ -17,4 +18,4 @@ public:
 };
 
 
-#endif //TRAVELLING_SALESMAN_PROBLEM_COORDINATEWITHVISTIEDSTATE_H
+#endif//TRAVELLING_SALESMAN_PROBLEM_COORDINATEWITHVISTIEDSTATE_H

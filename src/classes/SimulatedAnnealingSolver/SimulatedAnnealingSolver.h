@@ -1,11 +1,11 @@
 #ifndef TRAVELLING_SALESMAN_PROBLEM_SIMULATEDANNEALINGSOLVER_H
 #define TRAVELLING_SALESMAN_PROBLEM_SIMULATEDANNEALINGSOLVER_H
 
-#include <vector>
-#include "../Instance/Instance.h"
-#include "../GreedySolver/GreedySolver.h"
 #include "../GraphAdjacencyLists/AdjacencyList/AdjacencyList.h"
 #include "../GraphAdjacencyLists/GraphAdjacencyLists.h"
+#include "../GreedySolver/GreedySolver.h"
+#include "../Instance/Instance.h"
+#include <vector>
 
 class SimulatedAnnealingSolver {
 private:
@@ -43,4 +43,4 @@ public:
 };
 
 
-#endif //TRAVELLING_SALESMAN_PROBLEM_SIMULATEDANNEALINGSOLVER_H
+#endif//TRAVELLING_SALESMAN_PROBLEM_SIMULATEDANNEALINGSOLVER_H

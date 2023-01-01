@@ -1,15 +1,16 @@
 #ifndef TRAVELLING_SALESMAN_PROBLEM_GREEDYSOLVER_H
 #define TRAVELLING_SALESMAN_PROBLEM_GREEDYSOLVER_H
 
-#include "../Instance/Instance.h"
-#include "../GraphAdjacencyLists/GraphAdjacencyLists.h"
-#include "../GraphAdjacencyLists/AdjacencyList/AdjacencyList.h"
 #include "../CoordinateWithVisitedState/CoordinateWithVisitedState.h"
+#include "../GraphAdjacencyLists/AdjacencyList/AdjacencyList.h"
+#include "../GraphAdjacencyLists/GraphAdjacencyLists.h"
+#include "../Instance/Instance.h"
 
 class GreedySolver {
 private:
     Instance instance;
     double distance = 0;
+
 public:
     vector<AdjacencyList<CoordinateWithVisitedState> *> answer = {};
 
@@ -28,4 +29,4 @@ public:
 };
 
 
-#endif //TRAVELLING_SALESMAN_PROBLEM_GREEDYSOLVER_H
+#endif//TRAVELLING_SALESMAN_PROBLEM_GREEDYSOLVER_H

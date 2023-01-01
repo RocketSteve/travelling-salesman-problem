@@ -1,5 +1,5 @@
-#include <cfloat>
 #include "GreedySolver.h"
+#include <cfloat>
 
 GreedySolver::GreedySolver(Instance instance) {
     this->instance = instance;
@@ -40,7 +40,7 @@ pair<AdjacencyList<CoordinateWithVisitedState> *, double> GreedySolver::nextVert
             }
         }
     }
-    return pair<AdjacencyList<CoordinateWithVisitedState> *, double>(currentTheBest, currentTheBestDistance);
+    return {currentTheBest, currentTheBestDistance};
 }
 
 void GreedySolver::addVertexToAnswer(AdjacencyList<CoordinateWithVisitedState> *vertex) {
@@ -51,5 +51,3 @@ void GreedySolver::addVertexToAnswer(AdjacencyList<CoordinateWithVisitedState> *
 double GreedySolver::getDistance() const {
     return this->distance;
 }
-
-
