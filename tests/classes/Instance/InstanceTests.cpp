@@ -3,11 +3,17 @@
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/matchers/catch_matchers.hpp>
 
-TEST_CASE("addVertex", "[Instance]") {
+
+Instance *initialInstance() {
     auto instance = new Instance();
     instance->addVertex(CoordinateWithVisitedState(0, 0));
     instance->addVertex(CoordinateWithVisitedState(1, 2));
     instance->addVertex(CoordinateWithVisitedState(3, 4));
+    return instance;
+}
+
+TEST_CASE("addVertex", "[Instance]") {
+    auto instance = initialInstance();
     REQUIRE(instance->graph->getSize() == 3);
     REQUIRE(instance->graph->getVertex(2)->getValue() == CoordinateWithVisitedState(3, 4));
 }
@@ -23,10 +29,7 @@ bool checkConnectionWithThree(AdjacencyList<CoordinateWithVisitedState> vertex0,
 }
 
 TEST_CASE("connectAllPoints", "[Instance]") {
-    auto instance = new Instance();
-    instance->addVertex(CoordinateWithVisitedState(0, 0));
-    instance->addVertex(CoordinateWithVisitedState(1, 2));
-    instance->addVertex(CoordinateWithVisitedState(3, 4));
+    auto instance = initialInstance();
     instance->connectAllPoints();
     auto vertex0 = instance->graph->getVertex(0);
     auto vertex1 = instance->graph->getVertex(1);
@@ -40,10 +43,7 @@ TEST_CASE("connectAllPoints", "[Instance]") {
 }
 
 TEST_CASE("writeToFile", "[Instance]") {
-    auto instance = new Instance();
-    instance->addVertex(CoordinateWithVisitedState(0, 0));
-    instance->addVertex(CoordinateWithVisitedState(1, 2));
-    instance->addVertex(CoordinateWithVisitedState(3, 4));
+    auto instance = initialInstance();
     instance->connectAllPoints();
     string filename = "resources/test.txt";
     instance->writeToFile(filename);

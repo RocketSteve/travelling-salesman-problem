@@ -2,6 +2,13 @@
 #include <catch2/catch_test_macros.hpp>
 
 
+GraphAdjacencyLists<int> *initalGraph() {
+    auto graph = new GraphAdjacencyLists<int>();
+    graph->addVertex(1);
+    graph->addVertex(2);
+    return graph;
+}
+
 TEST_CASE("constructor", "[GraphAdjacencyLists]") { GraphAdjacencyLists<int>(); }
 
 TEST_CASE("addVertex", "[GraphAdjacencyLists]") {
@@ -19,18 +26,14 @@ TEST_CASE("getVertex", "[GraphAdjacencyLists]") {
 }
 
 TEST_CASE("getVertexByIndex", "[GraphAdjacencyLists]") {
-    auto graph = new GraphAdjacencyLists<int>();
-    graph->addVertex(1);
-    graph->addVertex(2);
+    auto graph = initalGraph();
     graph->removeVertex(0);
     auto list = graph->getVertexByIndex(0);
     REQUIRE(list->getValue() == 2);
 }
 
 TEST_CASE("removeVertex", "[GraphAdjacencyLists]") {
-    auto graph = new GraphAdjacencyLists<int>();
-    graph->addVertex(0);
-    graph->addVertex(1);
+    auto graph = initalGraph();
     graph->removeVertex(1);
     auto vertex = graph->getVertex(0);
     REQUIRE(vertex->getId() == 0);
@@ -38,9 +41,7 @@ TEST_CASE("removeVertex", "[GraphAdjacencyLists]") {
 }
 
 TEST_CASE("addAdjacencyToVertex", "[GraphAdjacencyLists]") {
-    auto graph = new GraphAdjacencyLists<int>();
-    graph->addVertex(0);
-    graph->addVertex(1);
+    auto graph = initalGraph();
     graph->addAdjacencyToVertex(0, 1);
     auto vertex = graph->getVertex(1);
     REQUIRE(graph->getVertex(0)->getAdjacency(0) == vertex);
@@ -56,9 +57,7 @@ TEST_CASE("addAdjacencyToVertex not valid", "[GraphAdjacencyLists]") {
 }
 
 TEST_CASE("removeAdjacencyFromVertex", "[GraphAdjacencyLists]") {
-    auto graph = new GraphAdjacencyLists<int>();
-    graph->addVertex(0);
-    graph->addVertex(1);
+    auto graph = initalGraph();
     graph->addAdjacencyToVertex(0, 1);
     graph->removeAdjacencyFromVertex(0, 1);
     graph->getVertex(0)->getAdjacency(0);

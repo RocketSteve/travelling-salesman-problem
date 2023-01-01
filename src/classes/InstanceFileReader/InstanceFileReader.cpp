@@ -6,11 +6,10 @@
 #include <vector>
 
 using std::cout;
+using std::endl;
 using std::ifstream;
 using std::pair;
-using std::pair;
 using std::vector;
-using std::endl;
 
 pair<string, string> split(const string &s, const string &delimiter) {
     size_t pos_start = 0, pos_end, delim_len = delimiter.length();
