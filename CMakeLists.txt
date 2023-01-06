@@ -22,6 +22,13 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(Catch2)
 
+FetchContent_Declare(
+        poco
+        GIT_REPOSITORY https://github.com/pocoproject/poco.git
+        GIT_TAG poco-1.12.4-release
+)
+FetchContent_MakeAvailable(poco)
+
 enable_testing()
 
 function(add_test_and_executable src name)
