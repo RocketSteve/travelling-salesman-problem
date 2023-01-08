@@ -22,12 +22,12 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(Catch2)
 
-FetchContent_Declare(
-        poco
-        GIT_REPOSITORY https://github.com/pocoproject/poco.git
-        GIT_TAG poco-1.12.4-release
+set(EXTERNAL_LIB_HEADERS lib/websocketpp)
+
+target_include_directories(
+        main PRIVATE
+        ${EXTERNAL_LIB_HEADERS}
 )
-FetchContent_MakeAvailable(poco)
 
 enable_testing()
 

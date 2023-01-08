@@ -1,0 +1,6 @@
+[submodule "lib/lib/toml11"]
+	path = lib/lib/toml11
+	url = https://github.com/ToruNiina/toml11
+[submodule "lib/websocketpp"]
+	path = lib/websocketpp
+	url = https://github.com/zaphoyd/websocketpp
