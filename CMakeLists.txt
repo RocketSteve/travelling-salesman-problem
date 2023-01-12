@@ -22,12 +22,16 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(Catch2)
 
-set(EXTERNAL_LIB_HEADERS lib/websocketpp)
 
-target_include_directories(
-        main PRIVATE
-        ${EXTERNAL_LIB_HEADERS}
-)
+find_package(Boost REQUIRED)
+include_directories(${Boost_INCLUDE_DIR})
+link_directories(${Boost_LIBRARY_DIRS})
+set(Boost_USE_STATIC_LIBS OFF)
+set(Boost_USE_MULTITHREADED ON)
+set(Boost_USE_STATIC_RUNTIME OFF)
+set(BOOST_ALL_DYN_LINK ON)
+
+target_include_directories(main PRIVATE lib/websocketpp)
 
 enable_testing()
 
