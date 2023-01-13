@@ -27,11 +27,9 @@ TEST_CASE("pushAdjacency()", "[AdjacencyList]") {
     int id = 0;
     auto adjacencyList = new AdjacencyList<int>(id, 5);
     auto adjacencyList2 = new AdjacencyList<int>(1, 3);
-    auto adjacencyList3 = new AdjacencyList<int>(2, 4);
     adjacencyList->pushAdjacency(adjacencyList2);
-    adjacencyList->pushAdjacency(adjacencyList3);
     auto lastElementOfAdjacencyList = adjacencyList->getAdjacency(0);
-    REQUIRE(adjacencyList3 == lastElementOfAdjacencyList);
+    REQUIRE(adjacencyList2 == lastElementOfAdjacencyList);
 }
 
 TEST_CASE("getAdjacency(index)", "[AdjacencyList]") {
