@@ -30,7 +30,7 @@ TEST_CASE("pushAdjacency()", "[AdjacencyList]") {
     auto adjacencyList3 = new AdjacencyList<int>(2, 4);
     adjacencyList->pushAdjacency(adjacencyList2);
     adjacencyList->pushAdjacency(adjacencyList3);
-    auto lastElementOfAdjacencyList = adjacencyList->getAdjacency(1);
+    auto lastElementOfAdjacencyList = adjacencyList->getAdjacency(0);
     REQUIRE(adjacencyList3 == lastElementOfAdjacencyList);
 }
 

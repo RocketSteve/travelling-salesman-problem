@@ -1,9 +1,9 @@
 #include "CoordinateWithVisitedState.h"
 
 CoordinateWithVisitedState::CoordinateWithVisitedState(double latitude, double longitude)
-    : Coordinate(latitude, longitude) {}
+    : coordinate(latitude, longitude) {}
 
-CoordinateWithVisitedState::CoordinateWithVisitedState() : Coordinate(0, 0) {}
+CoordinateWithVisitedState::CoordinateWithVisitedState() : coordinate(0, 0) {}
 
 void CoordinateWithVisitedState::visitCoordinate() { this->visited = true; }
 
