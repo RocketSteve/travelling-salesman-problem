@@ -2,7 +2,6 @@
 #define TRAVELLING_SALESMAN_PROBLEM_WEBSOCKETSERVER_H
 
 #include <iostream>
-#include <json/json.h>
 #include <utility>
 #include <vector>
 #include <websocketpp/config/asio_no_tls.hpp>
@@ -10,8 +9,6 @@
 
 using websocketpp::connection_hdl;
 using websocketpp::lib::bind;
-//using websocketpp::lib::placeholders::_1;
-//using websocketpp::lib::placeholders::_2;
 
 using websocketpp::lib::condition_variable;
 using websocketpp::lib::lock_guard;
