@@ -19,11 +19,11 @@ double SimulatedAnnealingSolver::calculateDistance(
     double tmpDistance = 0;
     for (int i = 0; i < coordinateList.size() - 1; i++) {
         auto currentCoordinate = coordinateList[i]->getValue();
-        Coordinate nextCoordinate = coordinateList[i + 1]->getValue();
+        Coordinate nextCoordinate = coordinateList[i + 1]->getValue().coordinate;
         tmpDistance += currentCoordinate.getDistance(nextCoordinate);
     }
     auto last = coordinateList[this->answer.size() - 1]->getValue();
-    Coordinate first = coordinateList[0]->getValue();
+    Coordinate first = coordinateList[0]->getValue().coordinate;
     tmpDistance += last.getDistance(first);
     return tmpDistance;
 }
