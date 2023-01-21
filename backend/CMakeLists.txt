@@ -2,12 +2,13 @@ cmake_minimum_required(VERSION 3.23)
 project(travelling-salesman-problem)
 
 set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 
 include_directories(include)
 
 file(GLOB_RECURSE classes src/classes/*.cpp)
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/resources DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
-file(COPY ${CMAKE_CURRENT_BINARY_DIR}/resources DESTINATION ${CMAKE_CURRENT_SOURCE_DIR})
+file(COPY resources DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+file(COPY ${CMAKE_CURRENT_BINARY_DIR}/resources DESTINATION ..)
 
 add_executable(main src/main.cpp ${classes})
 
@@ -38,7 +39,7 @@ enable_testing()
 function(add_test_and_executable src name)
     add_executable(${name} ${src} ${classes})
     target_link_libraries(${name} PRIVATE Catch2::Catch2WithMain)
-    target_include_directories(${name} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+    target_include_directories(${name} PRIVATE ..)
     add_test(NAME ${name} COMMAND ${name})
 endfunction()
 
@@ -58,4 +59,4 @@ add_test_and_executable(tests/classes/RandomNumberGenerator/RandomNumberGenerato
 
 add_executable(benchmark-tests tests/BenchmarkTests.cpp ${classes})
 target_link_libraries(benchmark-tests PRIVATE Catch2::Catch2WithMain)
-target_include_directories(benchmark-tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(benchmark-tests PRIVATE ..)
