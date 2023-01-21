@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "travelling-salesman-problem-visulation": {
+    "travelling-salesman-problem-visualization": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/travelling-salesman-problem-visulation",
+            "outputPath": "dist/travelling-salesman-problem-visualization",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "travelling-salesman-problem-visulation:build:production"
+              "browserTarget": "travelling-salesman-problem-visualization:build:production"
             },
             "development": {
-              "browserTarget": "travelling-salesman-problem-visulation:build:development"
+              "browserTarget": "travelling-salesman-problem-visualization:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "travelling-salesman-problem-visulation:build"
+            "browserTarget": "travelling-salesman-problem-visualization:build"
           }
         },
         "test": {
