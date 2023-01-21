@@ -1,5 +1,5 @@
+#include "../../../src/classes/InstanceFileReader/InstanceFileReader.h"
 #include "../../../src/classes/SimulatedAnnealingSolver/SimulatedAnnealingSolver.h"
-#include "src/classes/InstanceFileReader/InstanceFileReader.h"
 #include <algorithm>
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/matchers/catch_matchers.hpp>
