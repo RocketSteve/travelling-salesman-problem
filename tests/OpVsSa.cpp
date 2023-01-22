@@ -4,15 +4,15 @@
 #include <catch2/matchers/catch_matchers_floating_point.hpp>
 
 #define A280 "resources/a280.txt"
-#define ULYSSES22 "resources/ulysses22.txt"
+#define LIN318 "resources/lin318.txt"
 #define RD100 "resources/rd100.txt"
-#define TSP225 "resources/tsp225.txt"
+#define RAT99 "resources/rat99.txt"
 #define ST70 "resources/st70.txt"
 #define KROA100 "resources/kroA100.txt"
 #define LIN105 "resources/lin105.txt"
 #define CH150 "resources/ch150.txt"
 #define ELI51 "resources/eil51.txt"
-#define GR666 "resources/gr666.txt"
+#define U159 "resources/u159.txt"
 
 using std::cout;
 using std::endl;
@@ -41,10 +41,10 @@ TEST_CASE("A280", "[OpVsSa]") {
 }
 
 
-TEST_CASE("ULYSSES22", "[OpVsSa]") {
+TEST_CASE("LIN318", "[OpVsSa]") {
     cout << endl << "-------------------------------------------------------------------------------" << endl;
-    cout << endl << "ULYSSES22" << endl;
-    test_instance(ULYSSES22, 7013);
+    cout << endl << "LIN318" << endl;
+    test_instance(LIN318, 42029);
 }
 
 TEST_CASE("RD100", "[OpVsSa]") {
@@ -53,10 +53,10 @@ TEST_CASE("RD100", "[OpVsSa]") {
     test_instance(RD100, 7910);
 }
 
-TEST_CASE("TSP225", "[OpVsSa]") {
+TEST_CASE("RAT99", "[OpVsSa]") {
     cout << endl << "-------------------------------------------------------------------------------" << endl;
-    cout << endl << "TSP225" << endl;
-    test_instance(TSP225, 3919);
+    cout << endl << "RAT99" << endl;
+    test_instance(RAT99, 1211);
 }
 
 TEST_CASE("ST70", "[OpVsSa]") {
@@ -64,12 +64,6 @@ TEST_CASE("ST70", "[OpVsSa]") {
     cout << endl << "ST70" << endl;
     test_instance(ST70, 675);
 }
-
-//TEST_CASE("KROA100", "[OpVsSa]") {
-//    cout << endl << "-------------------------------------------------------------------------------" << endl;
-//    cout << endl << "KROA100" << endl;
-//    test_instance(KROA100, 21282);
-//}
 
 TEST_CASE("LIN105", "[OpVsSa]") {
     cout << endl << "-------------------------------------------------------------------------------" << endl;
@@ -89,14 +83,14 @@ TEST_CASE("ELI51", "[OpVsSa]") {
     test_instance(ELI51, 426);
 }
 
-TEST_CASE("GR666", "[OpVsSa]") {
-    cout << endl << "-------------------------------------------------------------------------------" << endl;
-    cout << endl << "GR666" << endl;
-    test_instance(GR666, 294358);
-}
-
 TEST_CASE("KROA100", "[OpVsSa]") {
     cout << endl << "-------------------------------------------------------------------------------" << endl;
     cout << endl << "KROA100" << endl;
     test_instance(KROA100, 21282);
+}
+
+TEST_CASE("U159", "[OpVsSa]") {
+    cout << endl << "-------------------------------------------------------------------------------" << endl;
+    cout << endl << "U159" << endl;
+    test_instance(U159, 42080);
 }
