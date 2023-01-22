@@ -48,3 +48,12 @@ add_test_and_executable(tests/classes/RandomNumberGenerator/RandomNumberGenerato
 add_executable(benchmark-tests tests/BenchmarkTests.cpp ${classes})
 target_link_libraries(benchmark-tests PRIVATE Catch2::Catch2WithMain)
 target_include_directories(benchmark-tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+
+add_executable(gr-vs-sa tests/GreedyVsSaTests.cpp ${classes})
+target_link_libraries(gr-vs-sa PRIVATE Catch2::Catch2WithMain)
+target_include_directories(gr-vs-sa PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+
+
+add_executable(op-vs-sa tests/OpVsSa.cpp ${classes})
+target_link_libraries(op-vs-sa PRIVATE Catch2::Catch2WithMain)
+target_include_directories(op-vs-sa PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
