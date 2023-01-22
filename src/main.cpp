@@ -15,6 +15,7 @@ int main(int argc, char *argv[]) {
         cout << "Too few arguments" << endl;
         cout << "Usage minimal: instanceFilename" << endl;
         cout << "Usage: instanceFilename stoppingTemperature stoppingIteration alpha" << endl;
+        return 0;
     } else if (argc < 5) {
         Instance *instance = new InstanceFileReader(argv[1]);
         solver = new SimulatedAnnealingSolver(instance);
