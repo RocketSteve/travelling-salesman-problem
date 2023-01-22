@@ -1,11 +1,13 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
+import { GraphComponent } from './graph/graph.component';
 
 import {AppComponent} from './app.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+      GraphComponent
   ],
   imports: [
     BrowserModule
