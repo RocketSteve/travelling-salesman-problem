@@ -14,9 +14,11 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: ${{github.workspace}}/backend
+#        working-directory: ${{github.workspace}}/backend
     runs-on: ubuntu-latest
     steps:
+      - name: LS
+        run: ls
       - name: Install Boost
         run: sudo apt-get install libboost-all-dev
 
