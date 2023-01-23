@@ -17,6 +17,11 @@ jobs:
       - name: Install Boost
         run: sudo apt-get install libboost-all-dev
 
+      - name: Pull & update submodules recursively
+        run: |
+          git submodule update --init --recursive
+          git submodule update --recursive --remote
+
       - name: Install Websocketpp
         working-directory: ./backend/lib/websocketpp
         run: cmake ./ && sudo make install
