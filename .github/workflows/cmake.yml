@@ -13,6 +13,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - name: Install Boost
         run: sudo apt-get install libboost-all-dev
 
@@ -20,7 +21,6 @@ jobs:
         working-directory: ./backend/lib/websocketpp
         run: cmake . && sudo make install
 
-      - uses: actions/checkout@v3
       - name: Configure CMake
         working-directory: backend
         run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
