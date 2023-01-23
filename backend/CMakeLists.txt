@@ -32,8 +32,7 @@ set(Boost_USE_MULTITHREADED ON)
 set(Boost_USE_STATIC_RUNTIME OFF)
 set(BOOST_ALL_DYN_LINK ON)
 
-find_path(WEBSOCKETPP_INCLUDE_DIR lib/websocketpp/)
-target_link_libraries(main PUBLIC websocketpp)
+target_include_directories(main PRIVATE lib/websocketpp)
 
 enable_testing()
 
