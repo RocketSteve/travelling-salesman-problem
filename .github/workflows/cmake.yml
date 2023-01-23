@@ -11,10 +11,6 @@ env:
 
 jobs:
   build:
-    defaults:
-      run:
-        shell: bash
-        working-directory: backend
     runs-on: ubuntu-latest
     steps:
       - name: Install Boost
@@ -25,9 +21,11 @@ jobs:
 
       - uses: actions/checkout@v3
       - name: Configure CMake
+        working-directory: backend
         run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
 
       - name: Build
+        working-directory: backend
         run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
 
       - name: Test
