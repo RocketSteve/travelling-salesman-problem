@@ -19,7 +19,7 @@ jobs:
 
       - name: Install Websocketpp
         working-directory: ./backend/lib/websocketpp
-        run: cmake && sudo make install
+        run: cmake ./ && sudo make install
 
       - name: Configure CMake
         working-directory: backend
