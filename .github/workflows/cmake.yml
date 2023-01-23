@@ -11,19 +11,21 @@ env:
 
 jobs:
   build:
-    run:
-      shell: bash
-      working-directory: ./backend
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./backend
     runs-on: ubuntu-latest
-               - name: Install Boost
-               run: sudo apt-get install libboost-all-dev
+    steps:
+      - name: Install Boost
+        run: sudo apt-get install libboost-all-dev
 
-               - name: Install Websocketpp
-                 run: cd lib/websocketpp && cmake . && sudo make install && cd ../..
+      - name: Install Websocketpp
+        run: cd lib/websocketpp && cmake . && sudo make install && cd ../..
 
-               - uses: actions/checkout@v3
-               - name: Configure CMake
-                 run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+      - uses: actions/checkout@v3
+      - name: Configure CMake
+        run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
 
       - name: Build
         run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
