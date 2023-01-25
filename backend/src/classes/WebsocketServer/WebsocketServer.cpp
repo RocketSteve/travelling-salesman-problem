@@ -59,7 +59,7 @@ void WebsocketServer::onMessage(const connection_hdl &hdl, const server::message
         this->fileNumber++;
     }
     InstanceFileReader instance(filename);
-    SimulatedAnnealingSolver solver(&instance);
+    SimulatedAnnealingSolver solver(&instance, 1e-4, 100000, 0.9999);
     solver.greedySolve();
     std::string path = "Greedy:";
     for (AdjacencyList<CoordinateWithVisitedState> *i: solver.answer) { path += " " + std::to_string(i->getId()); }
