@@ -49,6 +49,7 @@ void WebsocketServer::onClose(const connection_hdl &hdl) {
 
 void WebsocketServer::onMessage(const connection_hdl &hdl, const server::message_ptr &msg) {
     std::string filename;
+    std::cout << "Message received: " << msg->get_payload() << std::endl;
     {
         std::lock_guard<std::mutex> lock(this->connectionListMutex);
         filename = std::to_string(this->fileNumber) + ".txt";
