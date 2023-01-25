@@ -1,0 +1,25 @@
+<div class="container">
+  <mat-toolbar class="toolbar" color="primary">
+    <button (click)="snav.toggle()" mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1 class="app-name">Travelling Salesman Problem Visualizer</h1>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #snav class="sidenav-content">
+      <mat-form-field appearance="fill" class="instance-input">
+        <mat-label>TSP instance</mat-label>
+        <textarea cdkAutosizeMaxRows="30"
+                  cdkAutosizeMinRows="1"
+                  cdkTextareaAutosize
+                  matInput></textarea>
+      </mat-form-field>
+      <button mat-button style="align-self: flex-end">Find path</button>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
