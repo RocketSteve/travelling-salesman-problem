@@ -10,16 +10,17 @@
     <mat-sidenav #snav class="sidenav-content">
       <mat-form-field appearance="fill" class="instance-input">
         <mat-label>TSP instance</mat-label>
-        <textarea cdkAutosizeMaxRows="30"
+        <textarea #instance
+                  cdkAutosizeMaxRows="30"
                   cdkAutosizeMinRows="1"
                   cdkTextareaAutosize
                   matInput></textarea>
       </mat-form-field>
-      <button mat-button style="align-self: flex-end">Find path</button>
+      <button (click)="sendInstanceBtnHandler()" mat-button style="align-self: flex-end">Find path</button>
     </mat-sidenav>
 
     <mat-sidenav-content>
-
+      <ng-content></ng-content>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>

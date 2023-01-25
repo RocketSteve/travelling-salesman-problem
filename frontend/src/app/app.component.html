@@ -1,3 +1,8 @@
 <main>
-  <app-navbar></app-navbar>
+  <app-navbar>
+    <h2>Greedy Solution</h2>
+    <app-graph [coordinates]="points" [order]="greedySolution"></app-graph>
+    <h2>SA Solution</h2>
+    <app-graph [coordinates]="points" [order]="saSolution"></app-graph>
+  </app-navbar>
 </main>

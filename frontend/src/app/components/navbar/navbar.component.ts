@@ -1,4 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
+import {GetTspPathsService} from "../../services/get-tsp-paths.service";
+import {TspInstanceService} from "../../services/tsp-instance.service";
 
 @Component({
   selector: 'app-navbar',
@@ -7,7 +9,14 @@ import {Component} from '@angular/core';
 })
 export class NavbarComponent {
 
-  constructor() {
+  @ViewChild('instance', {read: ElementRef}) instanceInput!: ElementRef<HTMLTextAreaElement>;
+
+  constructor(private getTspPathsService: GetTspPathsService, private tspInstanceService: TspInstanceService) {
+  }
+
+  sendInstanceBtnHandler(): void {
+    this.tspInstanceService.getTspInstance(this.instanceInput.nativeElement.value);
+    this.getTspPathsService.sendInstance(this.instanceInput.nativeElement.value);
   }
 
   ngOnDestroy(): void {
