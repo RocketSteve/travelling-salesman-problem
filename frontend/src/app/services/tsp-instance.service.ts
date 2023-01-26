@@ -32,4 +32,20 @@ export class TspInstanceService {
       this.points.next(points);
     }
   }
+
+  checkValidTspInstance(instance: string): boolean {
+    const lines = instance.split("\n");
+    if (lines.length == 0) return false;
+    const numberOfPoints = parseInt(lines[0]);
+    if (numberOfPoints > 0) {
+      for (let i = 1; i < lines.length; i++) {
+        if (lines[i].length === 0) continue;
+        const line = lines[i].split(" ");
+        if (line.length !== 2) return false;
+        if (isNaN(parseInt(line[0])) || isNaN(parseInt(line[1]))) return false;
+      }
+      return true;
+    }
+    return false;
+  }
 }

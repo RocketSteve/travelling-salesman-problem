@@ -15,8 +15,10 @@ export class NavbarComponent {
   }
 
   sendInstanceBtnHandler(): void {
-    this.tspInstanceService.getTspInstance(this.instanceInput.nativeElement.value);
-    this.getTspPathsService.sendInstance(this.instanceInput.nativeElement.value);
+    if (this.tspInstanceService.checkValidTspInstance(this.instanceInput.nativeElement.value)) {
+      this.tspInstanceService.getTspInstance(this.instanceInput.nativeElement.value);
+      this.getTspPathsService.sendInstance(this.instanceInput.nativeElement.value);
+    } else alert("Invalid TSP instance");
   }
 
 }
