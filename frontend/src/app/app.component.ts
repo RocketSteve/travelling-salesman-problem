@@ -10,10 +10,10 @@ import {Point} from "@angular/cdk/drag-drop";
 })
 export class AppComponent implements OnInit {
   public points: Point[] = [];
-  public maxX: number = 0;
-  public maxY: number = 0;
   public greedySolution: number[] = []
+  public greedyDistance?: number;
   public saSolution: number[] = [];
+  public saDistance?: number;
 
   constructor(private getTcpPath: GetTspPathsService, public tspInstance: TspInstanceService) {
   }
@@ -22,18 +22,17 @@ export class AppComponent implements OnInit {
     this.tspInstance.points.subscribe(points => {
       this.points = points;
     });
-    this.tspInstance.maxX.subscribe((maxX: number) => {
-      this.maxX = maxX
-    });
-    this.tspInstance.maxY.subscribe((maxY: number) => {
-        this.maxY = maxY;
-      }
-    );
     this.getTcpPath.greedySolution.subscribe((solution: number[]) => {
       this.greedySolution = solution;
     });
     this.getTcpPath.saSolution.subscribe((solution: number[]) => {
       this.saSolution = solution;
+    });
+    this.getTcpPath.greedyDistance.subscribe((distance: number) => {
+      this.greedyDistance = distance;
+    });
+    this.getTcpPath.saDistance.subscribe((distance: number) => {
+      this.saDistance = distance;
     });
   }
 
