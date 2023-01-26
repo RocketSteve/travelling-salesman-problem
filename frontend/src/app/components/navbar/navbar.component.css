@@ -37,3 +37,9 @@ h1.app-name {
   width: 100%;
   min-height: 400px;
 }
+
+mat-sidenav-content {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}

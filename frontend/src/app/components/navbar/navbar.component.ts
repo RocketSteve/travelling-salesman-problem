@@ -19,7 +19,4 @@ export class NavbarComponent {
     this.getTspPathsService.sendInstance(this.instanceInput.nativeElement.value);
   }
 
-  ngOnDestroy(): void {
-  }
-
 }

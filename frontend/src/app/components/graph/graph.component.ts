@@ -5,7 +5,7 @@ import {Point} from "./point";
   selector: 'app-graph',
   styleUrls: ['./graph.component.css'],
   template: `
-    <canvas #canvas [width]="500" [height]="500"></canvas>
+    <canvas #canvas [width]="1000" [height]="1000"></canvas>
   `
 })
 export class GraphComponent implements AfterViewInit {
@@ -27,7 +27,7 @@ export class GraphComponent implements AfterViewInit {
 
   private draw() {
     if (this.ctx) {
-
+      this.ctx.clearRect(0, 0, 10000, 10000);
       if (this.coordinates.length === 0) return;
       if (this.order.length !== 0) {
         this.ctx.beginPath();
