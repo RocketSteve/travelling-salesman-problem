@@ -49,6 +49,7 @@ void WebsocketServer::onClose(const connection_hdl &hdl) {
 
 void WebsocketServer::onMessage(const connection_hdl &hdl, const server::message_ptr &msg) {
     std::string filename;
+    std::cout << "Message received: " << msg->get_payload() << std::endl;
     {
         std::lock_guard<std::mutex> lock(this->connectionListMutex);
         filename = std::to_string(this->fileNumber) + ".txt";
@@ -58,10 +59,11 @@ void WebsocketServer::onMessage(const connection_hdl &hdl, const server::message
         this->fileNumber++;
     }
     InstanceFileReader instance(filename);
-    SimulatedAnnealingSolver solver(&instance);
+    SimulatedAnnealingSolver solver(&instance, 1e-4, 100000, 0.9999);
     solver.greedySolve();
     std::string path = "Greedy:";
     for (AdjacencyList<CoordinateWithVisitedState> *i: solver.answer) { path += " " + std::to_string(i->getId()); }
+    path += " " + std::to_string(solver.getDistance());
     websocketpp::lib::error_code ec;
     std::cout << "Greedy path for client send " << path << std::endl;
     this->endpoint.send(hdl, path, websocketpp::frame::opcode::text, ec);
@@ -69,6 +71,7 @@ void WebsocketServer::onMessage(const connection_hdl &hdl, const server::message
     solver.solve();
     path = "SimulatedAnnealing:";
     for (AdjacencyList<CoordinateWithVisitedState> *i: solver.answer) { path += " " + std::to_string(i->getId()); }
+    path += " " + std::to_string(solver.getDistance());
     std::cout << "Simulated Annealing path for client send " << path << std::endl;
     this->endpoint.send(hdl, path, websocketpp::frame::opcode::text);
 }

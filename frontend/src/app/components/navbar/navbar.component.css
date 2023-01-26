@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.toolbar {
+  align-items: center;
+  z-index: 2;
+}
+
+h1.app-name {
+  margin: 0;
+  padding: 0;
+}
+
+.sidenav-container {
+  flex: 1;
+}
+
+.sidenav-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mat-sidenav {
+  flex: 1 0 auto;
+}
+
+.instance-input {
+  width: 100%;
+  min-height: 400px;
+}
+
+mat-sidenav-content {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}

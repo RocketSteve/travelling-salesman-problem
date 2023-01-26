@@ -1,0 +1,14 @@
+<main>
+  <app-navbar>
+    <section>
+      <h2>Greedy Solution</h2>
+      <h3 *ngIf="greedyDistance">Distance: {{ greedyDistance }}</h3>
+      <app-graph [coordinates]="points" [order]="greedySolution"></app-graph>
+    </section>
+    <section>
+      <h2>SA Solution</h2>
+      <h3 *ngIf="saDistance">Distance: {{ saDistance }}</h3>
+      <app-graph [coordinates]="points" [order]="saSolution"></app-graph>
+    </section>
+  </app-navbar>
+</main>

@@ -12,16 +12,24 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
       - name: Install Boost
         run: sudo apt-get install libboost-all-dev
 
-      - uses: actions/checkout@v3
+      - name: Install Websocketpp
+        working-directory: ./backend/lib/websocketpp
+        run: cmake ./ && sudo make install
+
       - name: Configure CMake
+        working-directory: backend
         run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
 
       - name: Build
+        working-directory: backend
         run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
 
       - name: Test
